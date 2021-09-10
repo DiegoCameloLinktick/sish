@@ -1,10 +1,9 @@
-package co.com.acueducto.sish.services;
+package co.com.acueducto.sish.configuracion.dominios;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import co.com.acueducto.sish.models.DominioModel;
-import co.com.acueducto.sish.repositories.DominioRepository;
+import co.com.acueducto.sish.configuracion.dominios.models.DominioModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
