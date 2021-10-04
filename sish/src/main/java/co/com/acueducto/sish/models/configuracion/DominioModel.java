@@ -1,5 +1,8 @@
 package co.com.acueducto.sish.models.configuracion;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,24 +12,12 @@ public class DominioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
+    @Getter @Setter
     private Long idDominio;
+
+    @Getter @Setter
     private String dominio;
 
-    public Long getIdDominio() {
-        return idDominio;
-    }
-
-    public void setIdDominio(Long id) {
-        this.idDominio = idDominio;
-    }
-
-    public String getDominio() {
-        return dominio;
-    }
-
-    public void setDominio(String dominio) {
-        this.dominio = dominio;
-    }
 
     
 }
