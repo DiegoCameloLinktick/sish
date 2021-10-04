@@ -1,4 +1,4 @@
-package co.com.acueducto.sish.configuracion.dominios.models;
+package co.com.acueducto.sish.models.configuracion;
 
 import javax.persistence.*;
 

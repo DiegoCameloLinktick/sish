@@ -1,10 +1,10 @@
-package co.com.acueducto.sish.controllers;
+package co.com.acueducto.sish.controllers.configuracion;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import co.com.acueducto.sish.configuracion.dominios.DominioService;
-import co.com.acueducto.sish.configuracion.dominios.models.DominioModel;
+import co.com.acueducto.sish.services.configuracion.DominioService;
+import co.com.acueducto.sish.models.configuracion.DominioModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
