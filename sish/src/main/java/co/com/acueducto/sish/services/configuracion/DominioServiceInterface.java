@@ -7,8 +7,16 @@ import java.util.ArrayList;
 
 public interface DominioServiceInterface {
 
+    /***
+     * Obtiene la lista de todos los dominios
+     * @return Lista de DominioModel
+     */
     ArrayList<DominioModel> obtenerDominios();
-
+    /***
+     * Obtiene un dominio por identificador
+     * @param id Identificador
+     * @return DominioModel
+     */
     DominioModel obtenerPorId(Long id);
 
 
