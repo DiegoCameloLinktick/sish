@@ -1,7 +1,6 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 
@@ -9,37 +8,33 @@ import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/***
+ *  Clase de definición de la logica de negocio para los dominios
+ */
 @Service
-public class DominioService {
+public class DominioService implements DominioServiceInterface {
     @Autowired
     DominioRepository dominioRepository;
-    
-    public ArrayList<DominioModel> obtenerDominios(){
-        return (ArrayList<DominioModel>) dominioRepository.findAll();
+
+
+    /***
+     * Obtiene la lista de todos los dominios
+     * @return Lista de DominioModel
+     */
+    public ArrayList<DominioModel> obtenerDominios() {
+        return (ArrayList<DominioModel>) dominioRepository.obtenerDominios();
     }
 
-    public DominioModel guardarDominio(DominioModel dominio){
-        return dominioRepository.save(dominio);
-    }
-
-    public Optional<DominioModel> obtenerPorId(Long id){
-        return dominioRepository.findById(id);
-    }
-
-
-    public ArrayList<DominioModel>  obtenerPorDominio(String dominio) {
-        return dominioRepository.findByDominio(dominio);
-    }
-
-    public boolean eliminarDominio(Long id) {
-        try{
-            dominioRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
+    /***
+     * Obtiene un dominio por identificador
+     * @param id Identificador
+     * @return DominioModel
+     */
+    public DominioModel obtenerPorId(Long id) {
+        return dominioRepository.obtenerDominioPorId(id);
     }
 
 
-    
+
+
 }

@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/***
+ *  Clase de definición de la tabla de los dominios del sistema
+ */
 @Entity
 @Table(name = "dominios")
 public class DominioModel {
@@ -18,6 +21,8 @@ public class DominioModel {
     @Getter @Setter
     private String dominio;
 
+    @Getter @Setter
+    private String descripcion;
 
     
 }

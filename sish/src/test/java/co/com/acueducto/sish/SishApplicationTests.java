@@ -8,6 +8,7 @@ class SishApplicationTests {
 
 	@Test
 	void contextLoads() {
+		throw new UnsupportedOperationException();
 	}
 
 }
