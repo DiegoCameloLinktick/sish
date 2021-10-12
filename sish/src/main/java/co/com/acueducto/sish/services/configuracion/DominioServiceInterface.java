@@ -11,7 +11,7 @@ public interface DominioServiceInterface {
      * Obtiene la lista de todos los dominios
      * @return Lista de DominioModel
      */
-    ArrayList<DominioModel> obtenerDominios();
+    ArrayList<DominioModel> obtener();
     /***
      * Obtiene un dominio por identificador
      * @param id Identificador

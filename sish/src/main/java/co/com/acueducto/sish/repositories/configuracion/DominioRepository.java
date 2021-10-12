@@ -24,7 +24,7 @@ public class DominioRepository implements  DominioRepositoryInterface   {
      */
     @Override
     @Transactional
-    public List<DominioModel>  obtenerDominios() {
+    public List<DominioModel>  obtener() {
         String query = "FROM DominioModel";
         return entityManager.createQuery(query).getResultList();
 
@@ -36,7 +36,7 @@ public class DominioRepository implements  DominioRepositoryInterface   {
      * @return DominioModel
      */
     @Transactional
-    public DominioModel obtenerDominioPorId(Long id) {
+    public DominioModel obtenerPorId(Long id) {
         return entityManager.find(DominioModel.class, id);
 
     }

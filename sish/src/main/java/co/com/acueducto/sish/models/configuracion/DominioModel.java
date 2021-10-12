@@ -14,13 +14,15 @@ public class DominioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false)
+    @Column(name = "id_dominio", unique = true, nullable = false)
     @Getter @Setter
     private Long idDominio;
 
+    @Column(name = "dominio", nullable = false)
     @Getter @Setter
     private String dominio;
 
+    @Column(name = "descripcion", nullable = false)
     @Getter @Setter
     private String descripcion;
 
