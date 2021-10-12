@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import co.com.acueducto.sish.controllers.configuracion.DominioController;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
@@ -9,13 +10,14 @@ import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /***
  *  Clase de definición de la logica de negocio para los dominios
  */
 @Service
-public class DominioService implements DominioServiceInterface {
+public class DominioService implements IDominioService {
     @Autowired
     DominioRepository dominioRepository;
 
@@ -27,7 +29,8 @@ public class DominioService implements DominioServiceInterface {
      */
     public ArrayList<DominioModel> obtener() {
         logger.debug("En obtenerDominios");
-        return (ArrayList<DominioModel>) dominioRepository.obtener();
+
+        return (ArrayList<DominioModel>) dominioRepository.findByOrderByDominioAsc();
     }
 
     /***
@@ -35,9 +38,9 @@ public class DominioService implements DominioServiceInterface {
      * @param id Identificador
      * @return DominioModel
      */
-    public DominioModel obtenerPorId(Long id) {
+    public Optional<DominioModel> obtenerPorId(Integer id) {
         logger.debug("En obtenerDominioPorId: " + id);
-        return dominioRepository.obtenerPorId(id);
+        return dominioRepository.findById(id);
     }
 
 

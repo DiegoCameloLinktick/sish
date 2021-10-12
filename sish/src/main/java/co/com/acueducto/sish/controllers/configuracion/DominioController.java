@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /***
  * Clase de definición del servicio REST de los dominios
@@ -36,7 +37,7 @@ public class DominioController {
      * @return DominioModel
      */
     @GetMapping( path = "obtenerDominioPorId/{id}")
-    public DominioModel obtenerDominioPorId(@RequestHeader(value="Authorization") String token,@PathVariable("id") Long id) {
+    public Optional<DominioModel> obtenerDominioPorId(@RequestHeader(value="Authorization") String token, @PathVariable("id") Integer id) {
         logger.debug("En obtenerDominioPorId: " +  id);
         return this.dominioService.obtenerPorId(id);
     }

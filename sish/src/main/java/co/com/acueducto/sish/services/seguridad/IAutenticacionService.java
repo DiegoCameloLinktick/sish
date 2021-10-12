@@ -2,7 +2,7 @@ package co.com.acueducto.sish.services.seguridad;
 
 import co.com.acueducto.sish.dtos.UsuarioDTO;
 
-public interface AutenticacionServiceInterface {
+public interface IAutenticacionService {
     /***
      * Determina si un usuario es valido y envia un token
      * @param usuario usuario a validar

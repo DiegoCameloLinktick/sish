@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class AutenticacionService implements AutenticacionServiceInterface{
+public class AutenticacionService implements IAutenticacionService {
     @Autowired
     RolRepository rolRepository;
 

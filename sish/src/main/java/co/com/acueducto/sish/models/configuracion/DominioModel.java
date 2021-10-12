@@ -16,7 +16,7 @@ public class DominioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_dominio", unique = true, nullable = false)
     @Getter @Setter
-    private Long idDominio;
+    private Integer idDominio;
 
     @Column(name = "dominio", nullable = false)
     @Getter @Setter
