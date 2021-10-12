@@ -1,6 +1,5 @@
 package co.com.acueducto.sish.services.seguridad;
 
-import co.com.acueducto.sish.controllers.configuracion.DominioController;
 import co.com.acueducto.sish.dtos.UsuarioDTO;
 import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.repositories.seguridad.RolRepository;

@@ -60,7 +60,7 @@ public class RolRepository implements RolRepositoryInterface{
     public List<RolModel> obtenerActivos() {
         String query = "FROM RolModel WHERE activo = :activo";
         return entityManager.createQuery(query)
-                .setParameter("activo", 'S')
+                .setParameter("activo", "S")
                 .getResultList();
 
     }
@@ -73,7 +73,7 @@ public class RolRepository implements RolRepositoryInterface{
     public List<RolModel> obtenerPorListaRoles(List<String> roles) {
         String query = "FROM RolModel WHERE activo = :activo and rol in :roles";
         return entityManager.createQuery(query)
-                .setParameter("activo", 'S')
+                .setParameter("activo", "S")
                 .setParameter("roles", roles)
                 .getResultList();
 
