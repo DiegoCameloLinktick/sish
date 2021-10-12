@@ -25,7 +25,7 @@ public class DominioController {
      * @return Lista de DominioModel
      */
     @GetMapping("/obtenerDominios")
-    public List<DominioModel> obtenerDominios(){
+    public List<DominioModel> obtenerDominios(@RequestHeader(value="Authorization") String token){
         logger.debug("En obtenerDominios");
         return dominioService.obtener();
     }
@@ -36,7 +36,7 @@ public class DominioController {
      * @return DominioModel
      */
     @GetMapping( path = "obtenerDominioPorId/{id}")
-    public DominioModel obtenerDominioPorId(@PathVariable("id") Long id) {
+    public DominioModel obtenerDominioPorId(@RequestHeader(value="Authorization") String token,@PathVariable("id") Long id) {
         logger.debug("En obtenerDominioPorId: " +  id);
         return this.dominioService.obtenerPorId(id);
     }
