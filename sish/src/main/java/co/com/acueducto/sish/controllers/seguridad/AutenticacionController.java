@@ -59,9 +59,9 @@ public class AutenticacionController {
      * @param token token a validar
      * @return toke si el usuario es valido
      */
-    @PostMapping(value = "/tokenValido")
-    public boolean tokenValido(String token) {
+    @PostMapping(value = "/esTokenValido")
+    public boolean esTokenValido(String token) {
         logger.debug("En validarToken");
-        return autenticacionService.tokenValido(token);
+        return autenticacionService.esTokenValido(token);
     }
 }

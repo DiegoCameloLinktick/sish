@@ -41,11 +41,9 @@ public class AutenticacionService implements IAutenticacionService {
      * @return toke si el usuario es valido
      */
     @Override
-    public boolean tokenValido(String token) {
+    public boolean esTokenValido(String token) {
         String id= jwtComponent.obteberId(token);
-        if (!id.isEmpty()){
-            return true;
-        }
-        return false;
+        return !id.isEmpty();
+
     }
 }

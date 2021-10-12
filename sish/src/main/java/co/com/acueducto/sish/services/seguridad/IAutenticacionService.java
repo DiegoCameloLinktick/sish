@@ -15,5 +15,5 @@ public interface IAutenticacionService {
      * @param token token
      * @return Verdadero si el token es valido
      */
-    boolean tokenValido(String token);
+    boolean esTokenValido(String token);
 }
