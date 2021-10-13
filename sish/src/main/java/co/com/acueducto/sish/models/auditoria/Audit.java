@@ -2,14 +2,14 @@ package co.com.acueducto.sish.models.auditoria;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 
 @MappedSuperclass
-@Getter
-@Setter
 public class Audit {
 
 
@@ -18,6 +18,7 @@ public class Audit {
      */
     @Column(name = "fecha_creacion")
     @Getter @Setter
+    @CreatedDate
     private Timestamp fechaCreacion;
 
     /***
@@ -25,6 +26,7 @@ public class Audit {
      */
     @Column(name = "fecha_modificacion")
     @Getter @Setter
+    @LastModifiedDate
     private Timestamp fechaModificacion;
 
     /***
