@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.beans.IntrospectionException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 
 @Service
@@ -43,7 +45,7 @@ public class AuditoriaService implements IAuditoriaService{
      * @return AuditoriaModel creado
      * @throws Exception
      */
-    public void registrarAuditoria(Object objeto, String usuario, OperacionAuditoriaEnum operacion,String nombreEntidad,Integer id) throws Exception {
+    public void registrarAuditoria(Object objeto, String usuario, OperacionAuditoriaEnum operacion,String nombreEntidad,Integer id)  {
         logger.debug("En registrarAuditoria");
         AuditoriaModel auditoriaModel = new AuditoriaModel();
         auditoriaModel.setId(id);

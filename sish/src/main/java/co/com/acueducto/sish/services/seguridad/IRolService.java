@@ -1,7 +1,9 @@
 package co.com.acueducto.sish.services.seguridad;
 
 import co.com.acueducto.sish.models.seguridad.RolModel;
+import org.springframework.validation.BindingResult;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -31,7 +33,7 @@ public interface IRolService {
      * @param rolModel rol a crear
      * @return RolModel creado
      */
-    RolModel crear(String usuario, RolModel rolModel) throws Exception;
+    RolModel crear(String usuario, RolModel rolModel);
 
     /***
      * Actualizar un rol

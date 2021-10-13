@@ -2,6 +2,7 @@ package co.com.acueducto.sish.models.seguridad;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "permisos_x_rol")
+@ToString
 public class PermisoXRolModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

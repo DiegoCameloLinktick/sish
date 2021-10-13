@@ -23,37 +23,42 @@ public class UtilidadesJSON {
      * Metodo para mapear los objetos fuentes que llegan en un String
      *
      * @param fuente Objetos a mapear que estuvieron implicados en la operación
-     *
      * @return fuente convertida a String
      */
-    public String convertirObjetoJson(Object fuente) throws IntrospectionException, InvocationTargetException, IllegalAccessException {
-        if (fuente != null){
-            String mapeo = "{";
-            Field[] atributos = fuente.getClass().getDeclaredFields();
-            for (Field atributo : atributos) {
-                if(!atributo.getName().equals("serialVersionUID") && !Collection.class.isAssignableFrom(atributo.getType())){
-                    PropertyDescriptor pd;
-                    pd = new PropertyDescriptor(atributo.getName(), fuente.getClass());
-                    Object valor = pd.getReadMethod().invoke(fuente);
-                    mapeo = mapeo.concat("\"");
-                    mapeo = mapeo.concat(atributo.getName());
-                    mapeo = mapeo.concat("\": ");
-                    if (valor == null){
-                        mapeo = mapeo.concat("null");
-                    } else{
+    public String convertirObjetoJson(Object fuente) {
+        if (fuente != null) {
+            try {
+                String mapeo = "{";
+                Field[] atributos = fuente.getClass().getDeclaredFields();
+                for (Field atributo : atributos) {
+                    if (!atributo.getName().equals("serialVersionUID") && !Collection.class.isAssignableFrom(atributo.getType())) {
+                        PropertyDescriptor pd;
+
+                        pd = new PropertyDescriptor(atributo.getName(), fuente.getClass());
+
+                        Object valor = pd.getReadMethod().invoke(fuente);
                         mapeo = mapeo.concat("\"");
-                        mapeo = mapeo.concat(valor.toString());
-                        mapeo = mapeo.concat("\"");
+                        mapeo = mapeo.concat(atributo.getName());
+                        mapeo = mapeo.concat("\": ");
+                        if (valor == null) {
+                            mapeo = mapeo.concat("null");
+                        } else {
+                            mapeo = mapeo.concat("\"");
+                            mapeo = mapeo.concat(valor.toString());
+                            mapeo = mapeo.concat("\"");
+                        }
+                        mapeo = mapeo.concat(",");
                     }
-                    mapeo = mapeo.concat(",");
                 }
+                if (mapeo.endsWith(",")) {
+                    mapeo = mapeo.substring(0, mapeo.length() - 1);
+                }
+                mapeo = mapeo.concat("}");
+                return mapeo;
+            } catch (IntrospectionException|InvocationTargetException|IllegalAccessException e) {
+                return null;
             }
-            if(mapeo.endsWith(",")){
-                mapeo = mapeo.substring(0, mapeo.length() - 1);
-            }
-            mapeo = mapeo.concat("}");
-            return mapeo;
-        } else{
+        } else {
             return null;
         }
     }

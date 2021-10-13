@@ -1,4 +1,4 @@
-package co.com.acueducto.sish.util.excepcion;
+package co.com.acueducto.sish.dtos;
 
 import java.util.Date;
 import java.util.List;
@@ -8,18 +8,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class ErrorResponse {
-
+    @Getter @Setter
     private int status;
-
+    @Getter @Setter
     private String message;
-
+    @Getter @Setter
     private Date timestamp;
-
+    @Getter @Setter
     List<String> errors;
 
     ErrorResponse(String message) {

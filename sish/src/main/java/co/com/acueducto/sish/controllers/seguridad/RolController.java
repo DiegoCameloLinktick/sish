@@ -3,12 +3,13 @@ package co.com.acueducto.sish.controllers.seguridad;
 import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
 import co.com.acueducto.sish.services.seguridad.RolService;
+import co.com.acueducto.sish.util.excepcion.InvalidDataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+import javax.validation.Valid;
 
 import java.util.List;
 import java.util.Optional;
@@ -66,18 +67,14 @@ public class RolController {
      * @return Rol creado
      */
     @PostMapping(value = "/crear")
-    public RolModel crear(@RequestHeader(value="Authorization") String token, RolModel rolModel) {
-        logger.debug("En crear " );
-        try {
-            String usuario = autenticacionService.obtenerId(token);
-            rolModel = this.rolService.crear(usuario,rolModel);
-        } catch (Exception e) {
-            logger.warn(e.toString(), e);
-            String message = "Usuario invalido, debe ser mayor de edad";
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, message);
-
+    public RolModel crear(@Valid @RequestHeader(value="Authorization") String token, RolModel rolModel, BindingResult result) {
+        logger.debug("Creando rol con datos {}", rolModel.toString());
+        if (result.hasErrors()) {
+            throw new InvalidDataException(result);
         }
-        return rolModel;
+        String usuario = autenticacionService.obtenerId(token);
+        return this.rolService.crear(usuario,rolModel);
+
     }
 
 }
