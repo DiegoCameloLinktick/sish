@@ -27,7 +27,7 @@ public class Audit {
     /***
      * Fecha en que fue modificado
      */
-    @Column(name = "fecha_modificacion", updatable = false)
+    @Column(name = "fecha_modificacion")
     @Getter @Setter
     @LastModifiedDate
     private Timestamp fechaModificacion;
@@ -35,7 +35,7 @@ public class Audit {
     /***
      * Fecha cuando se cambia el valor que posee el campo activo
      */
-    @Column(name = "fecha_estado" , updatable = false)
+    @Column(name = "fecha_estado" )
     @Getter @Setter
     private Timestamp fechaEstado;
 
@@ -49,14 +49,14 @@ public class Audit {
     /***
      * Usuario que realizó la modificación
      */
-    @Column(name = "usuario_modificacion", updatable = false)
+    @Column(name = "usuario_modificacion")
     @Getter @Setter
     private String usuarioModificacion;
 
     /***
      * Usuario que realizó la modificación del campo activo
      */
-    @Column(name = "usuario_estado", updatable = false)
+    @Column(name = "usuario_estado")
     @Getter @Setter
     private String usuarioEstado;
 }
