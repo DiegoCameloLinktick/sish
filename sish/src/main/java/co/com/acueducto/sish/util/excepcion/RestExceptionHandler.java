@@ -53,6 +53,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler
+    protected ResponseEntity<ErrorResponse> handleException(UnauthorizedException exc) {
+        HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
+        return buildResponseEntity(httpStatus, new RuntimeException("No autorizado"));
+    }
+    @ExceptionHandler
     protected ResponseEntity<ErrorResponse> handleException(Exception exc) {
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         return buildResponseEntity(httpStatus, new RuntimeException("Se presento un problema, reporte e intente luego."));

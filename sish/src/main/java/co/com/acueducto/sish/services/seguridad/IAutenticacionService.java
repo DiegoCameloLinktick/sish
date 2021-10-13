@@ -22,5 +22,12 @@ public interface IAutenticacionService {
      * @param token token
      * @return subject del token
      */
-     String obtenerSubject(String token);
+    String obtenerSubject(String token);
+
+    /***
+     * Determina si el token enviado es valido
+     * @param token Token a validar
+     * @return Verdadero si el token es valido
+     */
+    Boolean esTokenValido(String token);
 }

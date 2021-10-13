@@ -15,7 +15,9 @@ import org.springframework.validation.BindingResult;
 import javax.validation.Valid;
 import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -65,6 +67,8 @@ public class RolService implements IRolService {
      */
     public RolModel crear(String usuario, RolModel rolModel)  {
         logger.debug("En crear ");
+        rolModel.setFechaCreacion(new Timestamp(System.currentTimeMillis()));
+        rolModel.setFechaEstado(new Timestamp(System.currentTimeMillis()));
         rolModel = rolRepository.save(rolModel);
         auditoriaService.registrarAuditoria(rolModel,usuario, OperacionAuditoriaEnum.CREAR, RolService.class.toString(), rolModel.getIdRol());
         return rolModel;

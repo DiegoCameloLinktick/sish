@@ -54,4 +54,14 @@ public class AutenticacionService implements IAutenticacionService {
     public String obtenerSubject(String token) {
         return jwtComponent.obtenerSubject(token);
     }
+
+    /***
+     * Obtiene el subject del token
+     * @param token token
+     * @return subject del token
+     */
+    @Override
+    public Boolean esTokenValido(String token) {
+        return true;
+    }
 }

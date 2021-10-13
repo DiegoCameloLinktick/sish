@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -56,7 +57,7 @@ public class RolModel {
     @Column(name = "fecha_creacion", nullable = false)
     @NotNull(message = "La fecha de creación no puede ser nula")
     @Getter @Setter
-    private Date fechaCreacion;
+    private Timestamp fechaCreacion;
 
     /***
      * Fecha que asigna el sistema de forma automática cuando se cambia el valor que posee el campo activo
@@ -64,5 +65,5 @@ public class RolModel {
     @Column(name = "fecha_estado", nullable = false)
     @NotNull(message = "La fecha de estado no puede ser nula")
     @Getter @Setter
-    private Date fechaEstado;
+    private Timestamp fechaEstado;
 }
