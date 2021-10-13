@@ -2,7 +2,6 @@ package co.com.acueducto.sish.controllers.seguridad;
 
 import co.com.acueducto.sish.dtos.UsuarioDTO;
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
-import co.com.acueducto.sish.util.jwt.JwtComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,9 @@ public class AutenticacionController {
     public UsuarioDTO obtenerUsuarioAutenticado() {
         logger.debug("En obtenerUsuarioAutenticado");
         UsuarioDTO usuarioDTO =new UsuarioDTO();
-        usuarioDTO.setIdUsuario(1L);
-        usuarioDTO.setNombre("Jose Peréz");
-        usuarioDTO.setCorreo("joreperez@corre.com");
+        usuarioDTO.setUsuario("juanperez");
+        usuarioDTO.setNombre("Juan Peréz");
+        usuarioDTO.setCorreo("juanperez@corre.com");
         List<String> roles = new ArrayList<>();
         roles.add("General");
         usuarioDTO.setRoles(roles);
