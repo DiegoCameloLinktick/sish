@@ -4,7 +4,6 @@ import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
 import co.com.acueducto.sish.services.seguridad.RolService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
-import co.com.acueducto.sish.util.excepcion.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +34,8 @@ public class RolController {
      * @return Lista de RolModel
      */
     @GetMapping("/obtener")
-    public List<RolModel> obtener(@RequestHeader(value="Authorization") String token){
+    public List<RolModel> obtener(){
         logger.debug("En obtenerRoles");
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         return rolService.obtener();
     }
 
@@ -48,11 +44,8 @@ public class RolController {
      * @return Lista de RolModel
      */
     @GetMapping("/obtenerActivos")
-    public List<RolModel> obtenerActivos(@RequestHeader(value="Authorization") String token){
+    public List<RolModel> obtenerActivos(){
         logger.debug("En obtenerActivos");
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         return rolService.obtenerActivos();
     }
 
@@ -62,32 +55,37 @@ public class RolController {
      * @return RolModel
      */
     @GetMapping( path = "obtenerPorId/{id}")
-    public Optional<RolModel> obtenerPorId(@RequestHeader(value="Authorization") String token, @PathVariable("id") Integer id) {
+    public Optional<RolModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerRolPorId: " +  id);
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         return this.rolService.obtenerPorId(id);
     }
 
     /***
      * Crea un rol
-     * @param token Header con el token
      * @param rolModel Rol a crear
      * @return Rol creado
      */
     @PostMapping(value = "/crear")
-    public RolModel crear(@Valid @RequestHeader(value="Authorization") String token, RolModel rolModel, BindingResult result) {
+    public RolModel crear(@Valid RolModel rolModel, BindingResult result) {
         logger.debug("Creando rol con datos {}", rolModel.toString());
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        String usuario = autenticacionService.obtenerId(token);
-        return this.rolService.crear(usuario,rolModel);
+        return this.rolService.crear(rolModel);
 
     }
+    /***
+     * Actualizar un rol
+     * @param rolModel Rol a actualizar
+     * @return Rol creado
+     */
+    @PostMapping(value = "/actualizar")
+    public RolModel actualizar(@Valid RolModel rolModel, BindingResult result) {
+        logger.debug("Actualizando el rol con datos {}", rolModel.toString());
+        if (result.hasErrors()) {
+            throw new InvalidDataException(result);
+        }
+        return this.rolService.actualizar(rolModel);
 
+    }
 }

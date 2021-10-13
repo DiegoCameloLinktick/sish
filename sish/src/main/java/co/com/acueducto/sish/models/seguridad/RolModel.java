@@ -50,19 +50,46 @@ public class RolModel {
     @Getter @Setter
     private String activo;
 
+
     /***
-     * Fecha en que fue creado el rol en BD.
+     * Fecha en que fue creado
      */
-    @Column(name = "fecha_creacion", nullable = false)
-    @NotNull(message = "La fecha de creación no puede ser nula")
+    @Column(name = "fecha_creacion")
     @Getter @Setter
     private Timestamp fechaCreacion;
 
     /***
-     * Fecha que asigna el sistema de forma automática cuando se cambia el valor que posee el campo activo
+     * Fecha en que fue modificado
      */
-    @Column(name = "fecha_estado", nullable = false)
-    @NotNull(message = "La fecha de estado no puede ser nula")
+    @Column(name = "fecha_modificacion")
+    @Getter @Setter
+    private Timestamp fechaModificacion;
+
+    /***
+     * Fecha cuando se cambia el valor que posee el campo activo
+     */
+    @Column(name = "fecha_estado")
     @Getter @Setter
     private Timestamp fechaEstado;
+
+    /***
+     * Usuario que realizó la creaciòn
+     */
+    @Column(name = "usuario_creacion")
+    @Getter @Setter
+    private String usuarioCreacion;
+
+    /***
+     * Usuario que realizó la modificación
+     */
+    @Column(name = "usuario_modificacion")
+    @Getter @Setter
+    private String usuarioModificacion;
+
+    /***
+     * Usuario que realizó la modificación del campo activo
+     */
+    @Column(name = "usuario_estado")
+    @Getter @Setter
+    private String usuarioEstado;
 }

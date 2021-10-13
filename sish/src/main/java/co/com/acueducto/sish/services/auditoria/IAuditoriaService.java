@@ -7,5 +7,5 @@ public interface IAuditoriaService {
      * Crear un registro en la tabla
      * @return AuditoriaModel creado
      */
-    void registrarAuditoria(Object objeto, String usuario, OperacionAuditoriaEnum operacion, String nombreEntidad, Integer id);
+    void registrarAuditoria(Object objeto, OperacionAuditoriaEnum operacion, String nombreEntidad, Integer id);
 }

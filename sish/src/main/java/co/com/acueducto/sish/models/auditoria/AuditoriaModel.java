@@ -28,8 +28,8 @@ public class AuditoriaModel {
     /***
      * Fecha de la opercación
      */
-    @Column(name="fecha",nullable = false)
-    private Timestamp fecha;
+    @Column(name="fecha_creacion",nullable = false)
+    private Timestamp fechaCreacion;
 
     /***
      * Tipo de operacion, 1=Crear, 2=Modificar, 3=Eliminar

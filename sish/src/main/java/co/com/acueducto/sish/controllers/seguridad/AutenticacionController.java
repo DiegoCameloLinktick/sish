@@ -35,21 +35,11 @@ public class AutenticacionController {
         usuarioDTO.setUsuario("juanperez");
         usuarioDTO.setNombre("Juan Peréz");
         usuarioDTO.setCorreo("juanperez@corre.com");
+        usuarioDTO.setToken("eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxIiwiaWF0IjoxNjM0MDkwOTU5LCJzdWIiOiJkZCIsImlzcyI6Ik1haW4iLCJleHAiOjE2MzQ2OTU3NTl9.3TG_m9vZgWQZUi0P9_5v1jH9YcoJht9scGAxt7stV70");
         List<String> roles = new ArrayList<>();
         roles.add("General");
         usuarioDTO.setRoles(roles);
         return usuarioDTO;
-    }
-
-    /***
-     * Determina si un usuario es valido y envia un token
-     * @param usuario usuario a validar
-     * @return toke si el usuario es valido
-     */
-    @PostMapping(value = "/validarUsuario")
-    public String validarUsuario(UsuarioDTO usuario) {
-        logger.debug("En validarToken");
-        return autenticacionService.validarUsuario(usuario);
     }
 
 }

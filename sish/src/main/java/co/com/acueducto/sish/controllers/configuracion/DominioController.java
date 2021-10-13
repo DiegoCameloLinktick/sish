@@ -30,11 +30,8 @@ public class DominioController {
      * @return Lista de DominioModel
      */
     @GetMapping("/obtener")
-    public List<DominioModel> obtener(@RequestHeader(value="Authorization") String token){
+    public List<DominioModel> obtener(){
         logger.debug("En obtener");
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         return dominioService.obtener();
     }
 
@@ -44,11 +41,8 @@ public class DominioController {
      * @return DominioModel
      */
     @GetMapping( path = "obtenerPorId/{id}")
-    public Optional<DominioModel> obtenerPorId(@RequestHeader(value="Authorization") String token, @PathVariable("id") Integer id) {
+    public Optional<DominioModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerPorId: " +  id);
-        if(Boolean.FALSE.equals(autenticacionService.esTokenValido(token))) {
-            throw new UnauthorizedException();
-        }
         return this.dominioService.obtenerPorId(id);
     }
 }
