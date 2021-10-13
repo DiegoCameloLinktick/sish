@@ -2,5 +2,5 @@ projectKey=sish-backend
 serverUrl=http://localhost:9000
 serverVersion=9.1.0.47736
 dashboardUrl=http://localhost:9000/dashboard?id=sish-backend
-ceTaskId=AXx4H3-QjeIlz0duozkY
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXx4H3-QjeIlz0duozkY
+ceTaskId=AXx6l0cdjeIlz0duozkZ
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXx6l0cdjeIlz0duozkZ
