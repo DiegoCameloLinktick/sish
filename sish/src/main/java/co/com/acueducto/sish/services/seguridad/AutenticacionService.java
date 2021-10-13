@@ -36,14 +36,22 @@ public class AutenticacionService implements IAutenticacionService {
         return null;
     }
     /***
-     * Determina si un usuario es valido y envia un token
-     * @param token token a validar
-     * @return toke si el usuario es valido
+     * Obtiene el id del token
+     * @param token token
+     * @return id del token
      */
     @Override
-    public boolean esTokenValido(String token) {
-        String id= jwtComponent.obteberId(token);
-        return !id.isEmpty();
+    public String obtenerId(String token) {
+        return jwtComponent.obtenerId(token);
+    }
 
+    /***
+     * Obtiene el subject del token
+     * @param token token
+     * @return subject del token
+     */
+    @Override
+    public String obtenerSubject(String token) {
+        return jwtComponent.obtenerSubject(token);
     }
 }

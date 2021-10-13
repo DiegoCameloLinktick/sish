@@ -12,8 +12,21 @@ import java.util.List;
  *  Clase de definición de acceso a datos de los roles
  */
 @Repository
-public interface RolRepository extends JpaRepository<DominioModel, Integer> {
+public interface RolRepository extends JpaRepository<RolModel, Integer> {
 
+    /***
+     * Lista de los roles del sistema ordenada ascendentemente
+     * @return Lista de RolModel
+     */
+    List<RolModel> findByOrderByRolAsc();
+
+    /***
+     * Obtiene una lista de roles activos basado en una lista de nombres de roles
+     * @param roles lista de nombre de roles
+     * @return lista de RolModel
+     */
+    @Query("SELECT r FROM RolModel r WHERE activo = 'S'  ORDER BY rol ")
+    List<RolModel> obtenerActivos();
 
     /***
      * Obtiene una lista de roles activos basado en una lista de nombres de roles
@@ -22,6 +35,8 @@ public interface RolRepository extends JpaRepository<DominioModel, Integer> {
      */
     @Query("SELECT r FROM RolModel r WHERE activo = 'S'  and rol in :roles")
     List<RolModel> obtenerPorListaRoles(@Param("roles") List<String> roles);
+
+
 
 
 }

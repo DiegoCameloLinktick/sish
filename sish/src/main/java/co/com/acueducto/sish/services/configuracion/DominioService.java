@@ -20,7 +20,7 @@ public class DominioService implements IDominioService {
     @Autowired
     DominioRepository dominioRepository;
 
-    private static final Logger logger = LoggerFactory.getLogger(DominioController.class);
+    private static final Logger logger = LoggerFactory.getLogger(DominioService.class);
 
     /***
      * Obtiene la lista de todos los dominios

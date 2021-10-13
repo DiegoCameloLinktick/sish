@@ -24,8 +24,6 @@ public class AutenticacionController {
     @Autowired
     AutenticacionService autenticacionService;
 
-    @Autowired
-    private JwtComponent jwtComponent;
 
     /***
      * Obtiene el usuario que esta autenticado en la sesión activa del servidor del EEAB
@@ -54,14 +52,5 @@ public class AutenticacionController {
         logger.debug("En validarToken");
         return autenticacionService.validarUsuario(usuario);
     }
-    /***
-     * Determina si un usuario es valido y envia un token
-     * @param token token a validar
-     * @return toke si el usuario es valido
-     */
-    @PostMapping(value = "/esTokenValido")
-    public boolean esTokenValido(String token) {
-        logger.debug("En validarToken");
-        return autenticacionService.esTokenValido(token);
-    }
+
 }

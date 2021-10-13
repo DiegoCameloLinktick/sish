@@ -11,9 +11,16 @@ public interface IAutenticacionService {
     String validarUsuario(UsuarioDTO usuario);
 
     /***
-     * Determina si un token es valido
+     * Obtiene el id del token
      * @param token token
-     * @return Verdadero si el token es valido
+     * @return id del token
      */
-    boolean esTokenValido(String token);
+    String obtenerId(String token);
+
+    /***
+     * Obtiene el subject del token
+     * @param token token
+     * @return subject del token
+     */
+     String obtenerSubject(String token);
 }

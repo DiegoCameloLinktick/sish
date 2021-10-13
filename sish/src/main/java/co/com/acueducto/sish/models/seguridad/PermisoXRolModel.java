@@ -27,4 +27,6 @@ public class PermisoXRolModel {
     @JoinColumn(name = "id_permiso")
     @Getter @Setter
     private PermisoModel permiso;
+
+
 }

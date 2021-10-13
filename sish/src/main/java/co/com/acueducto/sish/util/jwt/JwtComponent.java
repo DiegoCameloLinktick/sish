@@ -65,7 +65,7 @@ public class JwtComponent {
      * @param token token
      * @return cadena con el subject
      */
-    public String obteberSubject(String token) {
+    public String obtenerSubject(String token) {
 
         // Esta línea lanzará una excepción si no es un JWS firmado
         Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secret))
@@ -80,7 +80,7 @@ public class JwtComponent {
      * @param token token
      * @return cadena con el id
      */
-    public String obteberId(String token) {
+    public String obtenerId(String token) {
         // Esta línea lanzará una excepción si no es un JWS firmado
         Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(secret))
                 .parseClaimsJws(token).getBody();
