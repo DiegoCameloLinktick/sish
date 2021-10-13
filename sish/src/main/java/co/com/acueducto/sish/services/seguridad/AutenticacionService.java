@@ -31,7 +31,7 @@ public class AutenticacionService implements IAutenticacionService {
         logger.debug("En validarUsuario");
         List<RolModel> roles =  rolRepository.obtenerPorListaRoles(usuario.getRoles());
         if (!roles.isEmpty()){
-            return jwtComponent.crearToken(String.valueOf(usuario.getIdUsuario()), usuario.getCorreo());
+            return jwtComponent.crearToken(String.valueOf(usuario.getUsuario()), usuario.getCorreo());
         }
         return null;
     }
