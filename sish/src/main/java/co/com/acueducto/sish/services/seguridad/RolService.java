@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.dao.DuplicateKeyException;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -58,6 +59,9 @@ public class RolService implements IRolService {
      */
     public RolModel crear(RolModel rolModel)  {
         logger.debug("Creando rol con datos {}", rolModel.toString());
+        if (rolRepository.existsRolModelByRol(rolModel.getRol())) {
+            throw new DuplicateKeyException("Ya existe rol con nombre: " + rolModel.getRol());
+        }
         rolModel = rolRepository.save(rolModel);
         auditoriaService.registrarAuditoria(rolModel, OperacionAuditoriaEnum.CREAR, RolService.class.toString(), rolModel.getIdRol());
         return rolModel;
@@ -70,6 +74,9 @@ public class RolService implements IRolService {
      */
     public RolModel actualizar(RolModel rolModel) {
         logger.debug("Actualizando rol con datos {}", rolModel.toString());
+        if (rolRepository.rolExistente(rolModel.getIdRol(), rolModel.getRol())) {
+            throw new DuplicateKeyException("Ya existe rol con nombre: " + rolModel.getRol());
+        }
         rolModel = rolRepository.save(rolModel);
         auditoriaService.registrarAuditoria(rolModel, OperacionAuditoriaEnum.ACTUALIZAR, RolService.class.toString(), rolModel.getIdRol());
         return rolModel;

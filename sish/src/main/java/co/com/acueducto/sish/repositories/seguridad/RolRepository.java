@@ -36,6 +36,20 @@ public interface RolRepository extends JpaRepository<RolModel, Integer> {
     @Query("SELECT r FROM RolModel r WHERE activo = 'S'  and rol in :roles")
     List<RolModel> obtenerPorListaRoles(@Param("roles") List<String> roles);
 
+    /***
+     * Determina si existe un rol con el mismo nombre
+     * @return Verdadero si existe
+     */
+    boolean existsRolModelByRol(String rol);
+
+    /***
+     * Determina si el nombre del rol esta asociado a otro rol
+     * @param id Identificador del rol actual
+     * @param rol nombre del rol a buscar
+     * @return Verdadero si existe
+     */
+    @Query("SELECT case when count(r)> 0 then true else false end from RolModel r WHERE id != :id  and rol = :rol")
+    boolean rolExistente(@Param("id") Integer id, @Param("rol") String rol);
 
 
 
