@@ -1,12 +1,11 @@
 package co.com.acueducto.sish.models.seguridad;
 
+import co.com.acueducto.sish.models.auditoria.Audit;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 
 /***
  *  Clase de definición de la tabla de los permisos del sistema
@@ -14,7 +13,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "permisos")
 @ToString
-public class PermisoModel {
+public class PermisoModel extends Audit {
     /***
      * Llave primaria
      */
@@ -46,17 +45,4 @@ public class PermisoModel {
     @Getter @Setter
     private String activo;
 
-    /***
-     * Fecha cuando se cambia el valor que posee el campo activo
-     */
-    @Column(name = "fecha_estado")
-    @Getter @Setter
-    private Timestamp fechaEstado;
-
-    /***
-     * Usuario que realizó la modificación del campo activo
-     */
-    @Column(name = "usuario_estado")
-    @Getter @Setter
-    private String usuarioEstado;
 }

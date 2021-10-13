@@ -1,5 +1,6 @@
 package co.com.acueducto.sish.models.seguridad;
 
+import co.com.acueducto.sish.models.auditoria.Audit;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -7,7 +8,6 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
 
 /***
  *  Clase de definición de la tabla de los permisos realacionados a un rol del sistema
@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "permisos_x_rol")
 @ToString
-public class PermisoXRolModel {
+public class PermisoXRolModel extends Audit {
     /***
      * Llave primaria
      */
@@ -52,46 +52,5 @@ public class PermisoXRolModel {
     private String activo;
 
 
-    /***
-     * Fecha en que fue creado
-     */
-    @Column(name = "fecha_creacion")
-    @Getter @Setter
-    private Timestamp fechaCreacion;
-
-    /***
-     * Fecha en que fue modificado
-     */
-    @Column(name = "fecha_modificacion")
-    @Getter @Setter
-    private Timestamp fechaModificacion;
-
-    /***
-     * Fecha cuando se cambia el valor que posee el campo activo
-     */
-    @Column(name = "fecha_estado")
-    @Getter @Setter
-    private Timestamp fechaEstado;
-
-    /***
-     * Usuario que realizó la creaciòn
-     */
-    @Column(name = "usuario_creacion")
-    @Getter @Setter
-    private String usuarioCreacion;
-
-    /***
-     * Usuario que realizó la modificación
-     */
-    @Column(name = "usuario_modificacion")
-    @Getter @Setter
-    private String usuarioModificacion;
-
-    /***
-     * Usuario que realizó la modificación del campo activo
-     */
-    @Column(name = "usuario_estado")
-    @Getter @Setter
-    private String usuarioEstado;
 
 }
