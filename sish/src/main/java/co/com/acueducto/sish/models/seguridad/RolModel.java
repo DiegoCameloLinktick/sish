@@ -3,10 +3,14 @@ import co.com.acueducto.sish.models.auditoria.Audit;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Timestamp;
 
 /***
  *  Clase de definición de la tabla de los roles del sistema
@@ -14,7 +18,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "roles")
 @ToString
-public class RolModel extends Audit {
+@EntityListeners(AuditingEntityListener.class)
+public class RolModel  extends Audit{
     /***
      * Llave primaria
      */
@@ -49,5 +54,6 @@ public class RolModel extends Audit {
     @Size(max = 1, message = "Activo debe tener maxímo un caracter")
     @Getter @Setter
     private String activo;
+
 
 }

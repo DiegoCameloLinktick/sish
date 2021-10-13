@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @ToString
-public class AuditoriaModel {
+public class AuditoriaModel{
 
     /***
      * Llave primaria
