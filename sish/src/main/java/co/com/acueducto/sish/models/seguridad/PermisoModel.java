@@ -38,11 +38,5 @@ public class PermisoModel extends Audit {
     @Getter @Setter
     private String descripcion;
 
-    /***
-     *Determina si el permiso esta activo S/N
-     */
-    @Column(name = "activo", nullable = false)
-    @Getter @Setter
-    private String activo;
 
 }

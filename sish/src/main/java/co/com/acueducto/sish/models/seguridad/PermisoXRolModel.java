@@ -6,8 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /***
  *  Clase de definición de la tabla de los permisos realacionados a un rol del sistema
@@ -41,16 +39,6 @@ public class PermisoXRolModel extends Audit {
     @JoinColumn(name = "id_permiso")
     @Getter @Setter
     private PermisoModel permiso;
-
-    /***
-     *Determina si el permiso en el rol esta activo S/N
-     */
-    @Column(name = "activo", nullable = false)
-    @NotNull(message = "Activo no puede ser nulo")
-    @Size(max = 1, message = "Activo debe tener maxímo un caracter")
-    @Getter @Setter
-    private String activo;
-
 
 
 }

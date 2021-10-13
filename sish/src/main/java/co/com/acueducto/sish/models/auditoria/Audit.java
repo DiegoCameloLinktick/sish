@@ -9,12 +9,25 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class Audit {
 
+    /***
+     *Determina si esta activo S/N
+     */
+    @Column(name = "activo", nullable = false)
+    @NotNull(message = "Activo no puede ser nulo")
+    @Size(max = 1, message = "Activo debe tener maxímo un caracter")
+    @Pattern(regexp = "^[SN]$", message = "Activo solo puede tenter S o N")
+    @Getter
+    @Setter
+    private String activo;
 
     /***
      * Fecha en que fue creado

@@ -1,4 +1,4 @@
-package co.com.acueducto.sish.models.auditoria;
+package co.com.acueducto.sish.util.auditoria;
 
 import org.springframework.data.domain.AuditorAware;
 
