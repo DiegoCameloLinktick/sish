@@ -13,6 +13,9 @@ import javax.persistence.*;
 @Table(name = "permisos")
 @ToString
 public class PermisoModel {
+    /***
+     * Llave primaria
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_permiso", unique = true, nullable = false)
@@ -20,14 +23,23 @@ public class PermisoModel {
     @Setter
     private Long idPermiso;
 
+    /***
+     * Nombre del permiso
+     */
     @Column(name = "permiso", nullable = false)
     @Getter @Setter
     private String permiso;
 
+    /***
+     *Descripción del permiso
+     */
     @Column(name = "descripcion", nullable = false)
     @Getter @Setter
     private String descripcion;
 
+    /***
+     *Determina si el permiso esta activo S/N
+     */
     @Column(name = "activo", nullable = false)
     @Getter @Setter
     private String activo;
