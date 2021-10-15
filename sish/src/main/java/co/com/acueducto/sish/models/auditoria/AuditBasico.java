@@ -16,34 +16,40 @@ import java.sql.Timestamp;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Audit extends AuditBasico{
-
-    /***
-     *Determina si esta activo S/N
-     */
-    @Column(name = "activo", nullable = false)
-    @NotNull(message = "Activo no puede ser nulo")
-    @Size(max = 1, message = "Activo debe tener maxímo un caracter")
-    @Pattern(regexp = "^[SN]$", message = "Activo solo puede tenter S o N")
-    @Getter
-    @Setter
-    private String activo;
+public class AuditBasico {
 
 
 
     /***
-     * Fecha cuando se cambia el valor que posee el campo activo
+     * Fecha en que fue creado
      */
-    @Column(name = "fecha_estado" )
+    @Column(name = "fecha_creacion", updatable = false)
     @Getter @Setter
-    private Timestamp fechaEstado;
+    @CreatedDate
+    private Timestamp fechaCreacion;
+
+    /***
+     * Fecha en que fue modificado
+     */
+    @Column(name = "fecha_modificacion")
+    @Getter @Setter
+    @LastModifiedDate
+    private Timestamp fechaModificacion;
 
 
     /***
-     * Usuario que realizó la modificación del campo activo
+     * Usuario que realizó la creaciòn
      */
-    @Column(name = "usuario_estado")
+    @Column(name = "usuario_creacion", updatable = false)
     @Getter @Setter
-    private String usuarioEstado;
+    private String usuarioCreacion;
+
+    /***
+     * Usuario que realizó la modificación
+     */
+    @Column(name = "usuario_modificacion")
+    @Getter @Setter
+    private String usuarioModificacion;
+
 
 }
