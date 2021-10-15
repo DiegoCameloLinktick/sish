@@ -1,21 +1,14 @@
 package co.com.acueducto.sish.controllers.configuracion;
 
-import co.com.acueducto.sish.dtos.request.DominioValorRequest;
-import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.services.configuracion.DominioService;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
-
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
-import co.com.acueducto.sish.util.excepcion.UnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;

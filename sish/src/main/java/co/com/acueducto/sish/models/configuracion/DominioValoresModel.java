@@ -30,7 +30,7 @@ public class DominioValoresModel extends Audit {
     @Column(name = "ID_DOMINIOS_VALORES", unique = true, nullable = false)
     @Getter
     @Setter
-    private Long idDominiosValores;
+    private Integer idDominiosValores;
 
     /***
      *id del dominio relacionado
@@ -38,7 +38,7 @@ public class DominioValoresModel extends Audit {
     @Column(name = "ID_DOMINIO", nullable = false)
     @NotNull(message = "El idDominio no puede ser nulo")
     @Getter @Setter
-    private BigDecimal idDominio;
+    private Integer idDominio;
 
     /***
      *nombre de los valores del dominio
