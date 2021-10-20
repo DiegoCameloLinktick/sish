@@ -2,8 +2,6 @@ package co.com.acueducto.sish.util.utilidades;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
