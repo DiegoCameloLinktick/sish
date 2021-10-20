@@ -25,5 +25,13 @@ public interface DominioValorRepository extends JpaRepository<DominioValoresMode
     List<DominioValoresModel> obtenerValoresPorIdDominio(@Param("idDominio") Integer idDominio);
 
 
+    /***
+     * Determina si el nombre del valordominio esta
+     * @param idDominiosValores Identificador del dominio actual
+     * @return Verdadero si existe
+     */
+    @Query("SELECT case when count(d)> 0 then true else false end from DominioValoresModel d WHERE idDominiosValores != :idDominiosValores ")
+    boolean valorDominioExistente(@Param("idDominiosValores") Integer idDominiosValores);
+
 
 }

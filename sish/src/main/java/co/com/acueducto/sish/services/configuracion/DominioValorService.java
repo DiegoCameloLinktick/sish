@@ -3,11 +3,14 @@ package co.com.acueducto.sish.services.configuracion;
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
+import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.repositories.configuracion.DominioValorRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
+import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -38,13 +41,24 @@ public class DominioValorService implements IDominioValorService{
     }
 
     /***
+     * Crear un valor dominio
+     * @param dominioValorModel valor dominio a crear
+     * @return RolModel creado
+     */
+    public DominioValoresModel crear(DominioValoresModel dominioValorModel)  {
+        logger.debug("Creando valores de dominio con datos {}", dominioValorModel.toString());
+        dominioValorModel = dominioValorRepository.save(dominioValorModel);
+        auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.CREAR,
+                RolService.class.toString(), dominioValorModel.getIdDominiosValores());
+        return dominioValorModel;
+    }
+
+    /***
      * actualiza la descripcion del dominio
      * @param dominioValorModel Identificador,descripcion descripcion
      */
-    public DominioValoresModel updateValorDominio(DominioValoresModel dominioValorModel){
-
+    public DominioValoresModel actualizar(DominioValoresModel dominioValorModel){
         logger.debug("Actualizando rol con datos {}", dominioValorModel.toString());
-
         dominioValorModel= dominioValorRepository.save(dominioValorModel);
         auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.ACTUALIZAR,
                 DominioService.class.toString(), dominioValorModel.getIdDominiosValores());

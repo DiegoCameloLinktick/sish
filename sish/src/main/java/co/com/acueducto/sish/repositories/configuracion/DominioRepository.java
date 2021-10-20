@@ -23,19 +23,6 @@ public interface DominioRepository  extends JpaRepository<DominioModel, Integer>
     List<DominioModel> findByOrderByDominioAsc();
 
     /***
-     * update de la descripcion del dominio
-     * @return void
-     */
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE DominioModel " +
-            "SET descripcion = :descripcion " +
-            "WHERE idDominio = :idDominio")
-    void updateDominio(@Param("idDominio") Integer idDominio,
-                       @Param("descripcion") String descripcion);
-
-
-    /***
      * Determina si el nombre del dominio esta
      * @param idDominio Identificador del dominio actual
      * @return Verdadero si existe

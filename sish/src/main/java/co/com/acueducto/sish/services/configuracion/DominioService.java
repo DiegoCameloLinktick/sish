@@ -7,6 +7,7 @@ import java.util.Optional;
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 
+import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
 import co.com.acueducto.sish.services.seguridad.RolService;
@@ -54,7 +55,7 @@ public class DominioService implements IDominioService {
      * actualiza la descripcion del dominio
      * @param dominioModel Identificador,descripcion descripcion
      */
-    public DominioModel updateDominio(DominioModel dominioModel){
+    public DominioModel actualizar(DominioModel dominioModel){
 
         logger.debug("Actualizando rol con datos {}", dominioModel.toString());
 
@@ -63,6 +64,19 @@ public class DominioService implements IDominioService {
                 DominioService.class.toString(), dominioModel.getIdDominio());
         return dominioModel;
 
+    }
+
+    /***
+     * Crear un valor dominio
+     * @param dominioModel valor dominio a crear
+     * @return RolModel creado
+     */
+    public DominioModel crear(DominioModel dominioModel)  {
+        logger.debug("Creando valores de dominio con datos {}", dominioModel.toString());
+        dominioModel = dominioRepository.save(dominioModel);
+        auditoriaService.registrarAuditoria(dominioModel, OperacionAuditoriaEnum.CREAR,
+                RolService.class.toString(), dominioModel.getIdDominio());
+        return dominioModel;
     }
 
 

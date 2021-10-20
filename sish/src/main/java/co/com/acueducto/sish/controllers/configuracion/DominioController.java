@@ -1,5 +1,6 @@
 package co.com.acueducto.sish.controllers.configuracion;
 
+import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.services.configuracion.DominioService;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
@@ -51,13 +52,28 @@ public class DominioController {
      * @param dominioModel Rol a actualizar
      * @return Rol creado
      */
-    @PostMapping(value = "/actualizarDominio")
-    public DominioModel actualizarDominio(@Valid DominioModel dominioModel, BindingResult result) {
+    @PostMapping(value = "/actualizar")
+    public DominioModel actualizar(@Valid DominioModel dominioModel, BindingResult result) {
         logger.debug("Actualizando el dominio con datos {}", dominioModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        return this.dominioService.updateDominio(dominioModel);
+        return this.dominioService.actualizar(dominioModel);
+
+    }
+
+    /***
+     * Crea un dominio
+     * @param dominioModel dominio a crear
+     * @return dominio creado
+     */
+    @PostMapping(value = "/crear")
+    public DominioModel crear(@Valid DominioModel dominioModel, BindingResult result) {
+        logger.debug("Creando rol con datos {}", dominioModel.toString());
+        if (result.hasErrors()) {
+            throw new InvalidDataException(result);
+        }
+        return this.dominioService.crear(dominioModel);
 
     }
 
