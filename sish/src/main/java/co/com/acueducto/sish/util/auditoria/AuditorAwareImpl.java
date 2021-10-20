@@ -10,6 +10,6 @@ public class AuditorAwareImpl implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
         // here more code
-        return null;
+        return Optional.empty();
     }
 }
