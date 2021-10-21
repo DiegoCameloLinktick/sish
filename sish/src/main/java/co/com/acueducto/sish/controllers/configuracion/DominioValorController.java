@@ -20,7 +20,7 @@ import java.util.List;
 public class DominioValorController {
 
     @Autowired
-    DominioValorService DominioValorService;
+    DominioValorService dominioValorService;
     private static final Logger logger = LoggerFactory.getLogger(DominioController.class);
 
     @Autowired
@@ -34,7 +34,7 @@ public class DominioValorController {
     @GetMapping( path = "/obtenerPorId/{id}")
     public List<DominioValoresModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerPorId: " +  id);
-        return this.DominioValorService.obtenerValoresPorIdDominio(id);
+        return this.dominioValorService.obtenerValoresPorIdDominio(id);
     }
 
     /***
@@ -48,7 +48,7 @@ public class DominioValorController {
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        return this.DominioValorService.crear(dominioValorModel);
+        return this.dominioValorService.crear(dominioValorModel);
 
     }
 
@@ -63,7 +63,7 @@ public class DominioValorController {
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        return this.DominioValorService.actualizar(dominioValorModel);
+        return this.dominioValorService.actualizar(dominioValorModel);
 
     }
 

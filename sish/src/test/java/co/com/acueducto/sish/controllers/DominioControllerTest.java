@@ -3,80 +3,71 @@ package co.com.acueducto.sish.controllers;
 
 import co.com.acueducto.sish.controllers.configuracion.DominioController;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
+import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import co.com.acueducto.sish.services.configuracion.DominioService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.application.Application;
-import org.aspectj.lang.annotation.Before;
+import co.com.acueducto.sish.services.configuracion.IDominioService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.client.ExpectedCount;
-import org.springframework.test.web.client.MockRestServiceServer;
-import org.springframework.test.web.client.RequestMatcher;
-import org.springframework.test.web.client.ResponseCreator;
-import org.springframework.test.web.client.match.MockRestRequestMatchers;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-@ContextConfiguration(classes= Application.class)
 @ComponentScan(basePackages="co.com.acueducto.sish")
 @PropertySource("classpath:application-test.properties")
 public class DominioControllerTest {
 
-  @InjectMocks
+  @Mock
   DominioService dominioService;
+  @Mock
+  IDominioService idominioService;
 
   @Mock
   DominioController controller;
   @Mock
-  RestTemplate restTemplate;
+  DominioRepository dominioRepository;
 
-  MockRestServiceServer mockServer;
+  DominioModel dominios;
 
-  private WebApplicationContext wac;
+  ArrayList<DominioModel> response = new ArrayList<>();
 
-  private MockMvc mockMvc;
+  ArrayList<DominioModel> dominioModelList = new ArrayList<>();
 
-  private static final ObjectMapper mapper = new ObjectMapper();
-
-  @Before("")
+  @BeforeEach
   public void setup() {
     MockitoAnnotations.initMocks(this);
-    this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    idominioService = new DominioService();
+    dominioService = new DominioService();
+    dominios = new DominioModel();
+    dominios.setDominio("test");
+    dominios.setIdDominio(1);
+    dominios.setDescripcion("ajuste");
+    dominioModelList.add(dominios);
+
+    response.add(dominios);
+
+    Mockito.when(dominioRepository.findByOrderByDominioAsc()).thenReturn(response);
+
+
+    ReflectionTestUtils.setField(dominioService,"dominioRepository",dominioRepository);
+
   }
 
   @Test
-  public void testDominio() throws Exception {
-    DominioModel response= mock(DominioModel.class);
-    response.setDominio("ejemplo");
-    response.setIdDominio(1);
-    response.setDescripcion("ajuste");
-
-    mockServer.expect(requestTo("/dominio/actualizar")).andExpect(method(HttpMethod.POST))
-            .andExpect((RequestMatcher) response)
-            .andRespond((ResponseCreator) response);
-
-
+  public void obtener()  {
+    List<DominioModel> dominioList=controller.obtener();
     }
+
+  @Test
+  public void obtenerPorId()  {
+    Optional<DominioModel> dominioList=controller.obtenerPorId(1);
+  }
+
+
 }

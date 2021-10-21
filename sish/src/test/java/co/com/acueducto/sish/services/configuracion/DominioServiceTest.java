@@ -1,52 +1,77 @@
 package co.com.acueducto.sish.services.configuracion;
 
-
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
-import org.aspectj.lang.annotation.Before;
+import co.com.acueducto.sish.services.auditoria.AuditoriaService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.anyInt;
 
 @ComponentScan(basePackages="co.com.acueducto.sish")
 @PropertySource("classpath:application-test.properties")
 public class DominioServiceTest {
 
     @Mock
-    RestTemplate restTemplate;
-    @MockBean
     DominioRepository dominioRepository;
-    @Autowired
-    DominioService dominioService;
 
-    @Before("")
+    IDominioService idominioService;
+    AuditoriaService auditoriaService;
+    DominioService dominioService;
+    DominioModel dominios;
+    ArrayList<DominioModel> response = new ArrayList<>();
+
+    @BeforeEach
     public void setup() throws Exception {
         MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    public void testDominio(){
-        DominioModel dominios = new DominioModel();
+        idominioService = new DominioService();
+        dominioService = new DominioService();
+        auditoriaService= new AuditoriaService();
+        dominios = new DominioModel();
         dominios.setDominio("test");
         dominios.setIdDominio(1);
         dominios.setDescripcion("ajuste");
-
-        ArrayList<DominioModel> response = new ArrayList<>();
         response.add(dominios);
 
-        //Mockito.when(dominioRepository.findByOrderByDominioAsc()).thenReturn(response);
+        Mockito.when(dominioRepository.findByOrderByDominioAsc()).thenReturn(response);
 
-        //dominioService.obtener();
+        Mockito.when(dominioRepository.save(dominios)).thenReturn(dominios);
+
+        Mockito.when(dominioRepository.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(dominios));
+
+        ReflectionTestUtils.setField(dominioService,"dominioRepository",dominioRepository);
 
     }
+
+    @Test
+    public void testObtenerDominio() throws Exception  {
+        ArrayList<DominioModel> dominioList=dominioService.obtener();
+        Assertions.assertEquals(dominioList,response);
+    }
+
+    @Test
+    public void actualizarDominio() throws Exception  {
+        DominioModel dominioList=dominioService.actualizar(dominios);
+        Assertions.assertEquals(dominioList,dominios);
+    }
+
+    @Test
+    public void obtenerPorId() throws Exception  {
+        Optional<DominioModel> dominioList=dominioService.obtenerPorId(anyInt());
+        DominioModel dominio=dominioList.get();
+        Assertions.assertEquals(dominioList,dominios);
+    }
+
 
 
 

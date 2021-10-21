@@ -33,7 +33,7 @@ public class DominioController {
     @GetMapping("/obtener")
     public List<DominioModel> obtener(){
         logger.debug("En obtener");
-        return dominioService.obtener();
+            return dominioService.obtener();
     }
 
     /***
