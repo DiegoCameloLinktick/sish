@@ -61,6 +61,7 @@ public class DominioControllerTest {
 
   @Test
   public void obtener()  {
+
     List<DominioModel> dominioList=controller.obtener();
     }
 
