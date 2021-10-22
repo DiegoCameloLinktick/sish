@@ -78,7 +78,8 @@ public class RolService implements IRolService {
             throw new DuplicateKeyException("Ya existe rol con nombre: " + rolModel.getRol());
         }
         rolModel = rolRepository.save(rolModel);
-        auditoriaService.registrarAuditoria(rolModel, OperacionAuditoriaEnum.ACTUALIZAR, RolService.class.toString(), rolModel.getIdRol());
+        auditoriaService.registrarAuditoria(rolModel, OperacionAuditoriaEnum.ACTUALIZAR,
+                RolService.class.toString(), rolModel.getIdRol());
         return rolModel;
     }
 }
