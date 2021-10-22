@@ -1,8 +1,13 @@
 package co.com.acueducto.sish.services.configuracion;
 
+import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
+import co.com.acueducto.sish.models.auditoria.AuditoriaModel;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
+import co.com.acueducto.sish.repositories.auditoria.AuditoriaRepository;
 import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
+import co.com.acueducto.sish.services.auditoria.IAuditoriaService;
+import co.com.acueducto.sish.util.utilidades.UtilidadesJSON;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
 
 @ComponentScan(basePackages="co.com.acueducto.sish")
 @PropertySource("classpath:application-test.properties")
@@ -26,17 +32,25 @@ public class DominioServiceTest {
     DominioRepository dominioRepository;
 
     IDominioService idominioService;
+    @Mock
     AuditoriaService auditoriaService;
+
+    IAuditoriaService iAuditoriaService;
+    @Mock
+    AuditoriaRepository auditoriaRepository;
+    @Mock
+    UtilidadesJSON utilidadesJSON;
     DominioService dominioService;
     DominioModel dominios;
     ArrayList<DominioModel> response = new ArrayList<>();
 
     @BeforeEach
-    public void setup() throws Exception {
+    public void setup() {
         MockitoAnnotations.initMocks(this);
         idominioService = new DominioService();
         dominioService = new DominioService();
-        auditoriaService= new AuditoriaService();
+        iAuditoriaService = new AuditoriaService();
+        auditoriaService = new AuditoriaService();
         dominios = new DominioModel();
         dominios.setDominio("test");
         dominios.setIdDominio(1);
@@ -44,9 +58,7 @@ public class DominioServiceTest {
         response.add(dominios);
 
         Mockito.when(dominioRepository.findByOrderByDominioAsc()).thenReturn(response);
-
         Mockito.when(dominioRepository.save(dominios)).thenReturn(dominios);
-
         Mockito.when(dominioRepository.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(dominios));
 
         ReflectionTestUtils.setField(dominioService,"dominioRepository",dominioRepository);
@@ -54,25 +66,52 @@ public class DominioServiceTest {
     }
 
     @Test
-    public void testObtenerDominio() throws Exception  {
+    public void testObtenerDominio() {
         ArrayList<DominioModel> dominioList=dominioService.obtener();
         Assertions.assertEquals(dominioList,response);
     }
 
     @Test
-    public void actualizarDominio() throws Exception  {
+    public void actualizarDominio()  {
+
+        AuditoriaModel auditoriaModel = new AuditoriaModel();
+        auditoriaModel.setIdAuditoria(Long.parseLong("1"));
+        auditoriaModel.setId(2);
+        auditoriaModel.setObjeto("dominiosModel");
+        auditoriaModel.setNombreEntidad("ModelosModelo");
+        auditoriaModel.setOperacion(2);
+        Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
+        Mockito.when(utilidadesJSON.convertirObjetoJson(dominios)).thenReturn("");
+        ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
+        ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
+        ReflectionTestUtils.setField(dominioService,"auditoriaService",auditoriaService);
         DominioModel dominioList=dominioService.actualizar(dominios);
         Assertions.assertEquals(dominioList,dominios);
     }
 
     @Test
-    public void obtenerPorId() throws Exception  {
+    public void obtenerPorId()  {
         Optional<DominioModel> dominioList=dominioService.obtenerPorId(anyInt());
         DominioModel dominio=dominioList.get();
-        Assertions.assertEquals(dominioList,dominios);
+        Assertions.assertEquals(dominio,dominios);
     }
 
+    @Test
+    public void crearDominio()  {
 
-
+        AuditoriaModel auditoriaModel = new AuditoriaModel();
+        auditoriaModel.setIdAuditoria(Long.parseLong("1"));
+        auditoriaModel.setId(2);
+        auditoriaModel.setObjeto("dominiosModel");
+        auditoriaModel.setNombreEntidad("ModelosModelo");
+        auditoriaModel.setOperacion(2);
+        Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
+        Mockito.when(utilidadesJSON.convertirObjetoJson(dominios)).thenReturn("");
+        ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
+        ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
+        ReflectionTestUtils.setField(dominioService,"auditoriaService",auditoriaService);
+        DominioModel dominioList=dominioService.crear(dominios);
+        Assertions.assertEquals(dominioList,dominios);
+    }
 
 }
