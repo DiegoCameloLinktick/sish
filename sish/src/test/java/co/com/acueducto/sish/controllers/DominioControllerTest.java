@@ -52,7 +52,8 @@ public class DominioControllerTest {
 
     response.add(dominios);
 
-    Mockito.when(dominioRepository.findByOrderByDominioAsc()).thenReturn(response);
+    Mockito.when(dominioService.obtenerPorId(1)).thenReturn(Optional.ofNullable(dominios));
+    Mockito.when(dominioService.obtener()).thenReturn(dominioModelList);
 
 
     ReflectionTestUtils.setField(dominioService,"dominioRepository",dominioRepository);
@@ -63,6 +64,8 @@ public class DominioControllerTest {
   public void obtener()  {
 
     List<DominioModel> dominioList=controller.obtener();
+
+
     }
 
   @Test
