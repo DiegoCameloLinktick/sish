@@ -1,9 +1,7 @@
 package co.com.acueducto.sish.repositories.configuracion;
-import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.models.configuracion.ParametrosModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 

@@ -3,11 +3,9 @@ package co.com.acueducto.sish.models.configuracion;
 import co.com.acueducto.sish.models.auditoria.Audit;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
 /***
  *  Clase de definición de la tabla de los Parametros del sistema
  */
