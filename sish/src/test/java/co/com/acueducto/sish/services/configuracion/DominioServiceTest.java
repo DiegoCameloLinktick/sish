@@ -1,6 +1,5 @@
 package co.com.acueducto.sish.services.configuracion;
 
-import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.auditoria.AuditoriaModel;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.repositories.auditoria.AuditoriaRepository;

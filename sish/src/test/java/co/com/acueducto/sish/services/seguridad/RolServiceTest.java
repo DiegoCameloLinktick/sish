@@ -1,7 +1,6 @@
 package co.com.acueducto.sish.services.seguridad;
 
 import co.com.acueducto.sish.models.auditoria.AuditoriaModel;
-import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.repositories.auditoria.AuditoriaRepository;
 import co.com.acueducto.sish.repositories.seguridad.RolRepository;

@@ -34,3 +34,4 @@ build/
 
 # Sonar
 .scannerwork
+.scannerwork/report-task.txt

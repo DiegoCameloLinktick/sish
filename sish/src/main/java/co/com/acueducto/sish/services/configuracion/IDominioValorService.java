@@ -1,11 +1,9 @@
 package co.com.acueducto.sish.services.configuracion;
 
-import co.com.acueducto.sish.models.configuracion.DominioModel;
-import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 
-import java.math.BigDecimal;
+import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import java.util.List;
-import java.util.Optional;
+
 
 public interface IDominioValorService {
 
