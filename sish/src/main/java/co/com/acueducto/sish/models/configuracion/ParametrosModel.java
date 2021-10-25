@@ -44,7 +44,7 @@ public class ParametrosModel  extends Audit {
     @NotNull(message = "la Descripcion del parametro  no puede ser nulo")
     @Column(name = "DESCRIPCION", nullable = false)
     @Getter @Setter
-    private String Descripcion;
+    private String descripcion;
 
     /***
      *Unidad De medidad   del Parametro

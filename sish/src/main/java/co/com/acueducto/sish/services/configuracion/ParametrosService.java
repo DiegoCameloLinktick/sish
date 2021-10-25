@@ -29,7 +29,7 @@ public class ParametrosService  implements IParametrosService     {
     public ArrayList<ParametrosModel> obtener() {
         logger.debug("En obtenerParametros");
         return (ArrayList<ParametrosModel>) parametrosRepository.findByOrderByParametrosAsc();
-      // return  null;
+
     }
     /***
      * Obtiene un Parametros por identificador
