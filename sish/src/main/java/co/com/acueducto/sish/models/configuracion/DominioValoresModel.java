@@ -1,8 +1,6 @@
 package co.com.acueducto.sish.models.configuracion;
 
-
 import co.com.acueducto.sish.models.auditoria.Audit;
-import co.com.acueducto.sish.models.auditoria.AuditBasico;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +9,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.math.BigDecimal;
 
 /***
  *  Clase de definición de la tabla de los valores de los dominios
