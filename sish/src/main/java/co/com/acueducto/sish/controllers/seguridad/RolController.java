@@ -33,6 +33,7 @@ public class RolController {
      * Obtiene la lista de todos los roles
      * @return Lista de RolModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/obtener")
     public List<RolModel> obtener(){
         logger.debug("En obtenerRoles");
