@@ -55,6 +55,7 @@ public class RolController {
      * @param id Identificador
      * @return RolModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "obtenerPorId/{id}")
     public Optional<RolModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerRolPorId: " +  id);
@@ -66,6 +67,7 @@ public class RolController {
      * @param rolModel Rol a crear
      * @return Rol creado
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/crear")
     public RolModel crear(@Valid RolModel rolModel, BindingResult result) {
         logger.debug("Creando rol con datos {}", rolModel.toString());
@@ -80,6 +82,7 @@ public class RolController {
      * @param rolModel Rol a actualizar
      * @return Rol creado
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/actualizar")
     public RolModel actualizar(@Valid RolModel rolModel, BindingResult result) {
         logger.debug("Actualizando el rol con datos {}", rolModel.toString());
