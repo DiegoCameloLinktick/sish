@@ -70,6 +70,7 @@ public class DominioValorController {
      * @param id Identificador del dominio
      * @return Lista DominioValoresModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/obtenerValoresPorIdDominio/{id}")
     public List<DominioValoresModel> obtenerValoresPorIdDominio(@PathVariable("id") Integer id) {
         logger.debug("En obtenerValoresPorIdDominio: " +  id);
@@ -81,6 +82,7 @@ public class DominioValorController {
      * @param id Identificador del dominio
      * @return Lista DominioValoresModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/obtenerValoresActivosPorIdDominio/{id}")
     public List<DominioValoresModel> obtenerValoresActivosPorIdDominio(@PathVariable("id") Integer id) {
         logger.debug("En obtenerValoresActivosPorIdDominio: " +  id);
