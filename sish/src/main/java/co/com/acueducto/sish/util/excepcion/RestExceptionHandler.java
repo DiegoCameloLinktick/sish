@@ -41,7 +41,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         List<String> errors = exc.getResult().getFieldErrors().stream().map(FieldError::getDefaultMessage)
                 .collect(Collectors.toList());
-        return buildResponseEntity(httpStatus, new RuntimeException("Data enviada es invalida"), errors);
+        return buildResponseEntity(httpStatus, new RuntimeException("Los datos envidos no son invalidos"), errors);
     }
 
     @ExceptionHandler
@@ -69,7 +69,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private ResponseEntity<ErrorResponse> buildResponseEntity(HttpStatus httpStatus, Exception exc, List<String> errors) {
         ErrorResponse error = new ErrorResponse();
-        error.setMessage("USRMSG-" + exc.getMessage());
+        error.setMessage(exc.getMessage());
         error.setStatus(httpStatus.value());
         error.setTimestamp(new Date());
         error.setErrors(errors);
