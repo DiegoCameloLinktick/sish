@@ -47,9 +47,9 @@ public class DominioValorServiceTest {
         iAuditoriaService = new AuditoriaService();
         auditoriaService = new AuditoriaService();
         valoresDominios = new DominioValoresModel();
-        valoresDominios.setIdDominiosValores(2);
+        valoresDominios.setIdDominioValor(2);
         valoresDominios.setIdDominio(1);
-        valoresDominios.setNombre("ajuste");
+        valoresDominios.setDominioValor("ajuste");
         valoresDominioList.add(valoresDominios);
 
         Mockito.when(dominioValorRepository.obtenerValoresPorIdDominio(1)).thenReturn(valoresDominioList);

@@ -24,15 +24,8 @@ public class DominioValorService implements IDominioValorService{
 
     private static final Logger logger = LoggerFactory.getLogger(DominioValorService.class);
 
-    /***
-     * Obtiene los valores de un dominio por identificador
-     * @param id Identificador
-     * @return DominioModel
-     */
-    public List<DominioValoresModel> obtenerValoresPorIdDominio(Integer id) {
-        logger.debug("En obtenerValoresPorId: " + id);
-        return dominioValorRepository.obtenerValoresPorIdDominio(id);
-    }
+
+
 
     /***
      * Crear un valor dominio
@@ -43,7 +36,7 @@ public class DominioValorService implements IDominioValorService{
         logger.debug("Creando valores de dominio con datos {}", dominioValorModel.toString());
         dominioValorModel = dominioValorRepository.save(dominioValorModel);
         auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.CREAR,
-                RolService.class.toString(), dominioValorModel.getIdDominiosValores());
+                RolService.class.toString(), dominioValorModel.getIdDominioValor());
         return dominioValorModel;
     }
 
@@ -55,9 +48,29 @@ public class DominioValorService implements IDominioValorService{
         logger.debug("Actualizando rol con datos {}", dominioValorModel.toString());
         dominioValorModel= dominioValorRepository.save(dominioValorModel);
         auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.ACTUALIZAR,
-                DominioService.class.toString(), dominioValorModel.getIdDominiosValores());
+                DominioService.class.toString(), dominioValorModel.getIdDominioValor());
         return dominioValorModel;
 
+    }
+
+    /***
+     * Obtiene los valores de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    public List<DominioValoresModel> obtenerValoresPorIdDominio(Integer id) {
+        logger.debug("En obtenerValoresPorId: " + id);
+        return dominioValorRepository.obtenerValoresPorIdDominio(id);
+    }
+
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    public List<DominioValoresModel> obtenerValoresActivosPorIdDominio(Integer id) {
+        logger.debug("En obtenerValoresActivosPorIdDominio: " + id);
+        return dominioValorRepository.obtenerValoresActivosPorIdDominio(id);
     }
 
 }

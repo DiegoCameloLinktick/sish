@@ -9,9 +9,16 @@ public interface IDominioValorService {
 
 
     /***
-     * Obtiene un dominio por identificador
-     * @param id Identificador
-     * @return DominioModel
+     * Obtiene un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
      */
     List<DominioValoresModel> obtenerValoresPorIdDominio(Integer id);
+
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    List<DominioValoresModel> obtenerValoresActivosPorIdDominio(Integer id);
 }

@@ -24,10 +24,10 @@ public class DominioValoresModel extends Audit {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_DOMINIOS_VALORES", unique = true, nullable = false)
+    @Column(name = "ID_DOMINIO_VALOR", unique = true, nullable = false)
     @Getter
     @Setter
-    private Integer idDominiosValores;
+    private Integer idDominioValor;
 
     /***
      *id del dominio relacionado
@@ -42,9 +42,9 @@ public class DominioValoresModel extends Audit {
      */
     @NotNull(message = "El nombre del valor no puede ser nulo")
     @Size(min = 2, message = "El nombre del valor debe tener al menos dos caracteres")
-    @Column(name = "NOMBRE", nullable = false)
+    @Column(name = "DOMINIO_VALOR", nullable = false)
     @Getter @Setter
-    private String nombre;
+    private String dominioValor;
 
 
 
