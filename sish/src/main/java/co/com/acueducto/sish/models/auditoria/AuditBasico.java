@@ -9,10 +9,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -26,7 +24,7 @@ public class AuditBasico {
     @Column(name = "fecha_creacion", updatable = false)
     @Getter @Setter
     @CreatedDate
-    private Timestamp fechaCreacion;
+    private Date fechaCreacion;
 
     /***
      * Fecha en que fue modificado
@@ -34,7 +32,7 @@ public class AuditBasico {
     @Column(name = "fecha_modificacion")
     @Getter @Setter
     @LastModifiedDate
-    private Timestamp fechaModificacion;
+    private Date fechaModificacion;
 
 
     /***

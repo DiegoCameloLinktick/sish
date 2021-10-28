@@ -41,7 +41,7 @@ public class RolController {
     }
 
     /***
-     * Obtiene la lista de todos los roles
+     * Obtiene la lista de los roles activos
      * @return Lista de RolModel
      */
     @GetMapping("/obtenerActivos")
@@ -68,8 +68,8 @@ public class RolController {
      * @return Rol creado
      */
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/crear")
-    public RolModel crear(@Valid RolModel rolModel, BindingResult result) {
+    @RequestMapping(value = "/crear", method = RequestMethod.POST)
+    public RolModel crear(@Valid @RequestBody RolModel rolModel, BindingResult result) {
         logger.debug("Creando rol con datos {}", rolModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
@@ -83,8 +83,8 @@ public class RolController {
      * @return Rol creado
      */
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping(value = "/actualizar")
-    public RolModel actualizar(@Valid RolModel rolModel, BindingResult result) {
+    @RequestMapping(value = "/actualizar", method = RequestMethod.POST)
+    public RolModel actualizar(@Valid @RequestBody RolModel rolModel, BindingResult result) {
         logger.debug("Actualizando el rol con datos {}", rolModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);

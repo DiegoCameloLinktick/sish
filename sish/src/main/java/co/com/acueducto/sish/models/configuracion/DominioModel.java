@@ -6,7 +6,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 /***
  *  Clase de definición de la tabla de los dominios del sistema
@@ -44,7 +45,7 @@ public class DominioModel extends AuditBasico {
     @Column(name = "fecha_modificacion")
     @Getter @Setter
     @LastModifiedDate
-    private Timestamp fechaModificacion;
+    private Date fechaModificacion;
 
     /***
      * Usuario que realizó la modificación
