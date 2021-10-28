@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.util.excepcion;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -27,7 +28,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler
     protected ResponseEntity<ErrorResponse> handleException(DuplicateKeyException exc) {
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-        return buildResponseEntity(httpStatus, exc);
+        List<String> errors=new ArrayList<String>();
+        errors.add(exc.getMessage());
+        return buildResponseEntity(httpStatus, exc,errors);
     }
 
     @ExceptionHandler
