@@ -1,7 +1,7 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.models.auditoria.AuditoriaModel;
-import co.com.acueducto.sish.models.configuracion.ParametrosModel;
+import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.repositories.auditoria.AuditoriaRepository;
 import co.com.acueducto.sish.repositories.configuracion.ParametrosRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
@@ -36,9 +36,9 @@ public class ParametrosServiceTest {
     @Mock
     UtilidadesJSON utilidadesJSON;
     ParametrosService parametrosService;
-    ParametrosModel parametrosModel;
+    ParametroModel parametroModel;
 
-    ArrayList<ParametrosModel> response = new ArrayList<>();
+    ArrayList<ParametroModel> response = new ArrayList<>();
 
     @BeforeEach
     public void setup() {
@@ -50,28 +50,28 @@ public class ParametrosServiceTest {
         iAuditoriaService = new AuditoriaService();
         auditoriaService = new AuditoriaService();
 
-        parametrosModel = new ParametrosModel();
+        parametroModel = new ParametroModel();
 //parametros para el  modelo
-        parametrosModel.setParametro("PRUEBAS");
-        parametrosModel.setIdParametro(1);
-        parametrosModel.setCodigo("Pruebas UNI 1");
-        parametrosModel.setIdMetodo(1);
-        parametrosModel.setIdUnidadMedida(1);
-        parametrosModel.setIdTipoParametro(1);
-        parametrosModel.setDescripcion("pruebas unitarias");
+        parametroModel.setParametro("PRUEBAS");
+        parametroModel.setIdParametro(1);
+        parametroModel.setCodigo("Pruebas UNI 1");
+        parametroModel.setIdMetodo(1);
+        parametroModel.setIdUnidadMedida(1);
+        parametroModel.setIdTipoParametro(1);
+        parametroModel.setDescripcion("pruebas unitarias");
 
-        response.add(parametrosModel);
+        response.add(parametroModel);
 
         Mockito.when(parametrosRepository.findByOrderByParametrosAsc()).thenReturn(response);
-        Mockito.when(parametrosRepository.save(parametrosModel)).thenReturn(parametrosModel);
-        Mockito.when(parametrosRepository.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(parametrosModel));
+        Mockito.when(parametrosRepository.save(parametroModel)).thenReturn(parametroModel);
+        Mockito.when(parametrosRepository.findById(anyInt())).thenReturn(java.util.Optional.ofNullable(parametroModel));
 
         ReflectionTestUtils.setField(parametrosService,"parametrosRepository",parametrosRepository);
 
     }
     @Test
     public void testObtenerParametros() {
-        ArrayList<ParametrosModel> parametroList=parametrosService.obtener();
+        ArrayList<ParametroModel> parametroList=parametrosService.obtener();
         Assertions.assertEquals(parametroList,response);
     }
     @Test
@@ -86,20 +86,20 @@ public class ParametrosServiceTest {
         auditoriaModel.setOperacion(2);
 
         Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
-        Mockito.when(utilidadesJSON.convertirObjetoJson(parametrosModel)).thenReturn("");
+        Mockito.when(utilidadesJSON.convertirObjetoJson(parametroModel)).thenReturn("");
         ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
         ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
 
         ReflectionTestUtils.setField(parametrosService,"auditoriaService",auditoriaService);
-        ParametrosModel parametrosList=parametrosService.actualizar(parametrosModel);
-        Assertions.assertEquals(parametrosList,parametrosModel);
+        ParametroModel parametrosList=parametrosService.actualizar(parametroModel);
+        Assertions.assertEquals(parametrosList, parametroModel);
     }
 
     @Test
     public void obtenerPorId()  {
-        Optional<ParametrosModel> parametroList=parametrosService.obtenerPorId(anyInt());
-        ParametrosModel parametro = parametroList.get();
-        Assertions.assertEquals(parametro,parametrosModel);
+        Optional<ParametroModel> parametroList=parametrosService.obtenerPorId(anyInt());
+        ParametroModel parametro = parametroList.get();
+        Assertions.assertEquals(parametro, parametroModel);
     }
     @Test
     public void crearParametro()  {
@@ -112,13 +112,13 @@ public class ParametrosServiceTest {
         auditoriaModel.setOperacion(2);
 
         Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
-        Mockito.when(utilidadesJSON.convertirObjetoJson(parametrosModel)).thenReturn("");
+        Mockito.when(utilidadesJSON.convertirObjetoJson(parametroModel)).thenReturn("");
 
         ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
         ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
         ReflectionTestUtils.setField(parametrosService,"auditoriaService",auditoriaService);
-        ParametrosModel parametroList = parametrosService.crear(parametrosModel);
-        Assertions.assertEquals(parametroList,parametrosModel);
+        ParametroModel parametroList = parametrosService.crear(parametroModel);
+        Assertions.assertEquals(parametroList, parametroModel);
     }
 
 }

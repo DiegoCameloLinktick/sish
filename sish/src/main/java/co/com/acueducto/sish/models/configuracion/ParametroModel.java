@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "PARAMETROS")
-public class ParametrosModel  extends Audit {
+public class ParametroModel extends Audit {
     /***
      * Llave primaria
      */

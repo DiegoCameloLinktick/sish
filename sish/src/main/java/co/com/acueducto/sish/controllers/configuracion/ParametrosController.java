@@ -1,5 +1,5 @@
 package co.com.acueducto.sish.controllers.configuracion;
-import co.com.acueducto.sish.models.configuracion.ParametrosModel;
+import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.services.configuracion.ParametrosService;
 import co.com.acueducto.sish.services.seguridad.AutenticacionService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
@@ -26,7 +26,7 @@ public class ParametrosController {
      * @return Lista de ParametrosModel
      */
     @GetMapping("/obtener")
-    public List<ParametrosModel> obtener(){
+    public List<ParametroModel> obtener(){
         logger.debug("En obtener");
         return parametrosService.obtener();
     }
@@ -37,38 +37,38 @@ public class ParametrosController {
      * @return ParametrosModel
      */
     @GetMapping( path = "/obtenerPorId/{id}")
-    public Optional<ParametrosModel> obtenerPorId(@PathVariable("id") Integer id) {
+    public Optional<ParametroModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerPorId: " +  id);
         return this.parametrosService.obtenerPorId(id);
     }
 
     /***
      * Actualizar un rol
-     * @param parametrosModel Rol a actualizar
+     * @param parametroModel Rol a actualizar
      * @return Rol creado
      */
     @PostMapping(value = "/actualizar")
-    public ParametrosModel actualizar(@Valid ParametrosModel parametrosModel, BindingResult result) {
-        logger.debug("Actualizando el Parametros con datos {}", parametrosModel.toString());
+    public ParametroModel actualizar(@Valid ParametroModel parametroModel, BindingResult result) {
+        logger.debug("Actualizando el Parametros con datos {}", parametroModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        return this.parametrosService.actualizar(parametrosModel);
+        return this.parametrosService.actualizar(parametroModel);
 
     }
 
     /***
      * Crea un Parametros
-     * @param parametrosModel parametros a crear
+     * @param parametroModel parametros a crear
      * @return Parametros creado
      */
     @PostMapping(value = "/crear")
-    public ParametrosModel crear(@Valid ParametrosModel parametrosModel, BindingResult result) {
-        logger.debug("Creando rol con datos {}", parametrosModel.toString());
+    public ParametroModel crear(@Valid ParametroModel parametroModel, BindingResult result) {
+        logger.debug("Creando rol con datos {}", parametroModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
-        return this.parametrosService.crear(parametrosModel);
+        return this.parametrosService.crear(parametroModel);
 
     }
 

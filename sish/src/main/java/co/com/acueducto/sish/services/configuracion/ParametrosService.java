@@ -1,7 +1,7 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
-import co.com.acueducto.sish.models.configuracion.ParametrosModel;
+import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.repositories.configuracion.ParametrosRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
 import co.com.acueducto.sish.services.seguridad.RolService;
@@ -26,9 +26,9 @@ public class ParametrosService  implements IParametrosService     {
      * Obtiene la lista de todos los Parametross
      * @return
      */
-    public ArrayList<ParametrosModel> obtener() {
+    public ArrayList<ParametroModel> obtener() {
         logger.debug("En obtenerParametros");
-        return (ArrayList<ParametrosModel>) parametrosRepository.findByOrderByParametrosAsc();
+        return (ArrayList<ParametroModel>) parametrosRepository.findByOrderByParametrosAsc();
 
     }
     /***
@@ -36,7 +36,7 @@ public class ParametrosService  implements IParametrosService     {
      * @param id Identificador
      * @return ParametrosModel
      */
-    public Optional<ParametrosModel> obtenerPorId(Integer id) {
+    public Optional<ParametroModel> obtenerPorId(Integer id) {
         logger.debug("En obtenerParametrosPorId: " + id);
         return parametrosRepository.findById(id);
     }
@@ -44,30 +44,30 @@ public class ParametrosService  implements IParametrosService     {
 
     /***
      * actualiza la descripcion del parametro
-     * @param parametrosModel Identificador,descripcion descripcion
+     * @param parametroModel Identificador,descripcion descripcion
      */
-    public ParametrosModel actualizar(ParametrosModel parametrosModel){
+    public ParametroModel actualizar(ParametroModel parametroModel){
 
-        logger.debug("Actualizando rol con datos {}", parametrosModel.toString());
+        logger.debug("Actualizando rol con datos {}", parametroModel.toString());
 
-        parametrosModel= parametrosRepository.save(parametrosModel);
-        auditoriaService.registrarAuditoria(parametrosModel, OperacionAuditoriaEnum.ACTUALIZAR,
-                ParametrosService.class.toString(), parametrosModel.getIdParametro());
-        return parametrosModel;
+        parametroModel = parametrosRepository.save(parametroModel);
+        auditoriaService.registrarAuditoria(parametroModel, OperacionAuditoriaEnum.ACTUALIZAR,
+                ParametrosService.class.toString(), parametroModel.getIdParametro());
+        return parametroModel;
 
     }
 
     /***
      * Crear un valor Parametros
-     * @param parametrosModel valor Parametros a crear
+     * @param parametroModel valor Parametros a crear
      * @return RolModel creado
      */
-    public ParametrosModel crear(ParametrosModel parametrosModel   )  {
-        logger.debug("Creando valores de Parametros con datos {}", parametrosModel.toString());
-        parametrosModel = parametrosRepository.save(parametrosModel);
-        auditoriaService.registrarAuditoria(parametrosModel, OperacionAuditoriaEnum.CREAR,
-                RolService.class.toString(), parametrosModel.getIdParametro());
-        return parametrosModel;
+    public ParametroModel crear(ParametroModel parametroModel)  {
+        logger.debug("Creando valores de Parametros con datos {}", parametroModel.toString());
+        parametroModel = parametrosRepository.save(parametroModel);
+        auditoriaService.registrarAuditoria(parametroModel, OperacionAuditoriaEnum.CREAR,
+                RolService.class.toString(), parametroModel.getIdParametro());
+        return parametroModel;
     }
 
 
