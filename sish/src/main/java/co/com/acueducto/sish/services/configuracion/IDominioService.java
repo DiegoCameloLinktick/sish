@@ -1,7 +1,7 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.models.configuracion.DominioModel;
-import org.springframework.data.repository.query.Param;
+
 
 import java.util.ArrayList;
 import java.util.Optional;

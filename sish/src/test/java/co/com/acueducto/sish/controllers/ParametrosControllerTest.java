@@ -4,11 +4,11 @@ import co.com.acueducto.sish.controllers.configuracion.ParametrosController;
 import co.com.acueducto.sish.models.auditoria.AuditoriaModel;
 import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.repositories.auditoria.AuditoriaRepository;
-import co.com.acueducto.sish.repositories.configuracion.ParametrosRepository;
+import co.com.acueducto.sish.repositories.configuracion.ParametroRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
 import co.com.acueducto.sish.services.auditoria.IAuditoriaService;
-import co.com.acueducto.sish.services.configuracion.IParametrosService;
-import co.com.acueducto.sish.services.configuracion.ParametrosService;
+import co.com.acueducto.sish.services.configuracion.IParametroService;
+import co.com.acueducto.sish.services.configuracion.ParametroService;
 import co.com.acueducto.sish.util.utilidades.UtilidadesJSON;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,12 +29,12 @@ import java.util.Optional;
 @PropertySource("classpath:application-test.properties")
 public class ParametrosControllerTest {
     @Mock
-    ParametrosService parametrosService;
+    ParametroService parametrosService;
     @Mock
-    IParametrosService iParametrosService;
+    IParametroService iParametroService;
     ParametrosController parametrosController;
     @Mock
-    ParametrosRepository parametrosRepository;
+    ParametroRepository parametroRepository;
     ParametroModel parametroModel;
 
     @Mock
@@ -56,8 +56,8 @@ public class ParametrosControllerTest {
         MockitoAnnotations.initMocks(this);
         iAuditoriaService = new AuditoriaService();
         auditoriaService = new AuditoriaService();
-        iParametrosService = new ParametrosService();
-        parametrosService = new ParametrosService();
+        iParametroService = new ParametroService();
+        parametrosService = new ParametroService();
         parametrosController = new ParametrosController();
         parametroModel = new ParametroModel();
 
@@ -83,9 +83,9 @@ public class ParametrosControllerTest {
         ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
         ReflectionTestUtils.setField(parametrosService,"auditoriaService",auditoriaService);
       
-        Mockito.when(parametrosRepository.findByOrderByParametrosAsc()).thenReturn(valoresList);
-        Mockito.when(parametrosRepository.save(parametroModel)).thenReturn(parametroModel);
-        ReflectionTestUtils.setField(parametrosService,"parametrosRepository",parametrosRepository);
+        Mockito.when(parametroRepository.findByOrderByParametrosAsc()).thenReturn(valoresList);
+        Mockito.when(parametroRepository.save(parametroModel)).thenReturn(parametroModel);
+        ReflectionTestUtils.setField(parametrosService,"parametrosRepository", parametroRepository);
 
         Mockito.when(parametrosService.obtener()).thenReturn(valoresList);
         Mockito.when(parametrosService.obtenerPorId(1)).thenReturn(Optional.ofNullable(parametroModel));

@@ -33,6 +33,7 @@ public class RolController {
      * Obtiene la lista de todos los roles
      * @return Lista de RolModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/obtener")
     public List<RolModel> obtener(){
         logger.debug("En obtenerRoles");
@@ -40,7 +41,7 @@ public class RolController {
     }
 
     /***
-     * Obtiene la lista de todos los roles
+     * Obtiene la lista de los roles activos
      * @return Lista de RolModel
      */
     @GetMapping("/obtenerActivos")
@@ -54,6 +55,7 @@ public class RolController {
      * @param id Identificador
      * @return RolModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "obtenerPorId/{id}")
     public Optional<RolModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerRolPorId: " +  id);
@@ -65,8 +67,9 @@ public class RolController {
      * @param rolModel Rol a crear
      * @return Rol creado
      */
-    @PostMapping(value = "/crear")
-    public RolModel crear(@Valid RolModel rolModel, BindingResult result) {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/crear", method = RequestMethod.POST)
+    public RolModel crear(@Valid @RequestBody RolModel rolModel, BindingResult result) {
         logger.debug("Creando rol con datos {}", rolModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
@@ -79,8 +82,9 @@ public class RolController {
      * @param rolModel Rol a actualizar
      * @return Rol creado
      */
-    @PostMapping(value = "/actualizar")
-    public RolModel actualizar(@Valid RolModel rolModel, BindingResult result) {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/actualizar", method = RequestMethod.POST)
+    public RolModel actualizar(@Valid @RequestBody RolModel rolModel, BindingResult result) {
         logger.debug("Actualizando el rol con datos {}", rolModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);

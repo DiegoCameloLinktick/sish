@@ -3,6 +3,7 @@ package co.com.acueducto.sish.models.auditoria;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
@@ -10,7 +11,8 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
@@ -34,7 +36,7 @@ public class Audit extends AuditBasico{
      */
     @Column(name = "fecha_estado" )
     @Getter @Setter
-    private Timestamp fechaEstado;
+    private Date fechaEstado;
 
 
     /***

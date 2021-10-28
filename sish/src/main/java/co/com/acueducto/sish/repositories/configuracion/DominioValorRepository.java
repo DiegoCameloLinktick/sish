@@ -24,6 +24,13 @@ public interface DominioValorRepository extends JpaRepository<DominioValoresMode
     @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio ")
     List<DominioValoresModel> obtenerValoresPorIdDominio(@Param("idDominio") Integer idDominio);
 
+    /***
+     * Obtiene una lista de valores activos realacionados con el dominio
+     * @return lista de DominioValoresModel
+     */
+    @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio and activo = 'S' ")
+    List<DominioValoresModel> obtenerValoresActivosPorIdDominio(@Param("idDominio") Integer idDominio);
+
 
     /***
      * Determina si el nombre del valordominio esta

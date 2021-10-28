@@ -5,6 +5,7 @@ import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.seguridad.RolModel;
 import co.com.acueducto.sish.repositories.seguridad.RolRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
+import co.com.acueducto.sish.util.excepcion.InvalidDataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

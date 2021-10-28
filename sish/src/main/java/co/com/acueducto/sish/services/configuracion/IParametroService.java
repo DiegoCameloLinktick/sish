@@ -4,7 +4,7 @@ import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import java.util.List;
 import java.util.Optional;
 
- public interface IParametrosService {
+ public interface IParametroService {
     /***
      * Obtiene un Parametros por identificador
      * @return ParametrosModel

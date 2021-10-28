@@ -23,8 +23,6 @@ public class DominioValorController {
     DominioValorService dominioValorService;
     private static final Logger logger = LoggerFactory.getLogger(DominioController.class);
 
-    @Autowired
-    AutenticacionService autenticacionService;
 
     /***
      * Obtiene un dominio por identificador
@@ -67,4 +65,27 @@ public class DominioValorController {
 
     }
 
+    /***
+     * Obtiene los valores de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping( path = "/obtenerValoresPorIdDominio/{id}")
+    public List<DominioValoresModel> obtenerValoresPorIdDominio(@PathVariable("id") Integer id) {
+        logger.debug("En obtenerValoresPorIdDominio: " +  id);
+        return this.dominioValorService.obtenerValoresPorIdDominio(id);
+    }
+
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping( path = "/obtenerValoresActivosPorIdDominio/{id}")
+    public List<DominioValoresModel> obtenerValoresActivosPorIdDominio(@PathVariable("id") Integer id) {
+        logger.debug("En obtenerValoresActivosPorIdDominio: " +  id);
+        return this.dominioValorService.obtenerValoresActivosPorIdDominio(id);
+    }
 }

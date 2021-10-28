@@ -2,7 +2,7 @@ package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.configuracion.ParametroModel;
-import co.com.acueducto.sish.repositories.configuracion.ParametrosRepository;
+import co.com.acueducto.sish.repositories.configuracion.ParametroRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
 import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
-public class ParametrosService  implements IParametrosService     {
+public class ParametroService implements IParametroService {
 
     @Autowired
-    ParametrosRepository parametrosRepository;
+    ParametroRepository parametroRepository;
     @Autowired
     AuditoriaService auditoriaService; 
     
-    private static final Logger logger = LoggerFactory.getLogger(ParametrosService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ParametroService.class);
 
     /***
      * Obtiene la lista de todos los Parametross
@@ -28,7 +28,7 @@ public class ParametrosService  implements IParametrosService     {
      */
     public ArrayList<ParametroModel> obtener() {
         logger.debug("En obtenerParametros");
-        return (ArrayList<ParametroModel>) parametrosRepository.findByOrderByParametrosAsc();
+        return (ArrayList<ParametroModel>) parametroRepository.findByOrderByParametrosAsc();
 
     }
     /***
@@ -38,7 +38,7 @@ public class ParametrosService  implements IParametrosService     {
      */
     public Optional<ParametroModel> obtenerPorId(Integer id) {
         logger.debug("En obtenerParametrosPorId: " + id);
-        return parametrosRepository.findById(id);
+        return parametroRepository.findById(id);
     }
 
 
@@ -50,9 +50,9 @@ public class ParametrosService  implements IParametrosService     {
 
         logger.debug("Actualizando rol con datos {}", parametroModel.toString());
 
-        parametroModel = parametrosRepository.save(parametroModel);
+        parametroModel = parametroRepository.save(parametroModel);
         auditoriaService.registrarAuditoria(parametroModel, OperacionAuditoriaEnum.ACTUALIZAR,
-                ParametrosService.class.toString(), parametroModel.getIdParametro());
+                ParametroService.class.toString(), parametroModel.getIdParametro());
         return parametroModel;
 
     }
@@ -64,7 +64,7 @@ public class ParametrosService  implements IParametrosService     {
      */
     public ParametroModel crear(ParametroModel parametroModel)  {
         logger.debug("Creando valores de Parametros con datos {}", parametroModel.toString());
-        parametroModel = parametrosRepository.save(parametroModel);
+        parametroModel = parametroRepository.save(parametroModel);
         auditoriaService.registrarAuditoria(parametroModel, OperacionAuditoriaEnum.CREAR,
                 RolService.class.toString(), parametroModel.getIdParametro());
         return parametroModel;

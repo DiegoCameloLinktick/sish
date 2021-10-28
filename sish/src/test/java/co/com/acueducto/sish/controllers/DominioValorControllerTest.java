@@ -61,9 +61,9 @@ public class DominioValorControllerTest {
         dominioValorService = new DominioValorService();
         dominioValorController = new DominioValorController();
         dominioValoresModel = new DominioValoresModel();
-        dominioValoresModel.setIdDominiosValores(2);
+        dominioValoresModel.setIdDominioValor(2);
         dominioValoresModel.setIdDominio(1);
-        dominioValoresModel.setNombre("ajuste");
+        dominioValoresModel.setDominioValor("ajuste");
         valoresList.add(dominioValoresModel);
 
         AuditoriaModel auditoriaModel = new AuditoriaModel();
