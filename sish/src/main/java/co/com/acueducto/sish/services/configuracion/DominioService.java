@@ -11,6 +11,7 @@ import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 /***
@@ -52,9 +53,7 @@ public class DominioService implements IDominioService {
      * @param dominioModel Identificador,descripcion descripcion
      */
     public DominioModel actualizar(DominioModel dominioModel){
-
-        logger.debug("Actualizando rol con datos {}", dominioModel.toString());
-
+        logger.debug("Actualizando dominio con datos {}", dominioModel.toString());
         dominioModel= dominioRepository.save(dominioModel);
         auditoriaService.registrarAuditoria(dominioModel, OperacionAuditoriaEnum.ACTUALIZAR,
                 DominioService.class.toString(), dominioModel.getIdDominio());
@@ -62,18 +61,7 @@ public class DominioService implements IDominioService {
 
     }
 
-    /***
-     * Crear un valor dominio
-     * @param dominioModel valor dominio a crear
-     * @return RolModel creado
-     */
-    public DominioModel crear(DominioModel dominioModel)  {
-        logger.debug("Creando valores de dominio con datos {}", dominioModel.toString());
-        dominioModel = dominioRepository.save(dominioModel);
-        auditoriaService.registrarAuditoria(dominioModel, OperacionAuditoriaEnum.CREAR,
-                RolService.class.toString(), dominioModel.getIdDominio());
-        return dominioModel;
-    }
+
 
 
 }

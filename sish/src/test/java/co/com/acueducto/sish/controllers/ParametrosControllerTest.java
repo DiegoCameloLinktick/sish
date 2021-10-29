@@ -29,7 +29,7 @@ import java.util.Optional;
 @PropertySource("classpath:application-test.properties")
 public class ParametrosControllerTest {
     @Mock
-    ParametroService parametrosService;
+    ParametroService parametroService;
     @Mock
     IParametroService iParametroService;
     ParametrosController parametrosController;
@@ -57,7 +57,7 @@ public class ParametrosControllerTest {
         iAuditoriaService = new AuditoriaService();
         auditoriaService = new AuditoriaService();
         iParametroService = new ParametroService();
-        parametrosService = new ParametroService();
+        parametroService = new ParametroService();
         parametrosController = new ParametrosController();
         parametroModel = new ParametroModel();
 
@@ -73,7 +73,7 @@ public class ParametrosControllerTest {
         AuditoriaModel auditoriaModel = new AuditoriaModel();
         auditoriaModel.setIdAuditoria(Long.parseLong("1"));
         auditoriaModel.setId(2);
-        auditoriaModel.setObjeto("parametrosModel");
+        auditoriaModel.setObjeto("parametroModel");
         auditoriaModel.setNombreEntidad("ModelosModelo");
         auditoriaModel.setOperacion(2);
 
@@ -81,17 +81,17 @@ public class ParametrosControllerTest {
         Mockito.when(utilidadesJSON.convertirObjetoJson(parametroModel)).thenReturn("");
         ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
         ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
-        ReflectionTestUtils.setField(parametrosService,"auditoriaService",auditoriaService);
+        ReflectionTestUtils.setField(parametroService,"auditoriaService",auditoriaService);
       
         Mockito.when(parametroRepository.findByOrderByParametrosAsc()).thenReturn(valoresList);
         Mockito.when(parametroRepository.save(parametroModel)).thenReturn(parametroModel);
-        ReflectionTestUtils.setField(parametrosService,"parametrosRepository", parametroRepository);
+        ReflectionTestUtils.setField(parametroService,"parametroRepository", parametroRepository);
 
-        Mockito.when(parametrosService.obtener()).thenReturn(valoresList);
-        Mockito.when(parametrosService.obtenerPorId(1)).thenReturn(Optional.ofNullable(parametroModel));
-        Mockito.when(parametrosService.actualizar(parametroModel)).thenReturn(parametroModel);
-        Mockito.when(parametrosService.crear(parametroModel)).thenReturn(parametroModel);
-        ReflectionTestUtils.setField(parametrosController,"parametrosService",parametrosService);
+        Mockito.when(parametroService.obtener()).thenReturn(valoresList);
+        Mockito.when(parametroService.obtenerPorId(1)).thenReturn(Optional.ofNullable(parametroModel));
+        Mockito.when(parametroService.actualizar(parametroModel)).thenReturn(parametroModel);
+        Mockito.when(parametroService.crear(parametroModel)).thenReturn(parametroModel);
+        ReflectionTestUtils.setField(parametrosController,"parametroService",parametroService);
 }
 
 

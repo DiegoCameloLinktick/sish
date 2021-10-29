@@ -23,12 +23,11 @@ public class DominioController {
     DominioService dominioService;
     private static final Logger logger = LoggerFactory.getLogger(DominioController.class);
 
-    @Autowired
-    AutenticacionService autenticacionService;
     /***
      * Obtiene la lista de todos los dominios
      * @return Lista de DominioModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/obtener")
     public List<DominioModel> obtener(){
         logger.debug("En obtener");
@@ -40,6 +39,7 @@ public class DominioController {
      * @param id Identificador
      * @return DominioModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/obtenerPorId/{id}")
     public Optional<DominioModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerPorId: " +  id);
@@ -51,28 +51,14 @@ public class DominioController {
      * @param dominioModel Rol a actualizar
      * @return Rol creado
      */
-    @PostMapping(value = "/actualizar")
-    public DominioModel actualizar(@Valid DominioModel dominioModel, BindingResult result) {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/actualizar",method = RequestMethod.POST)
+    public DominioModel actualizar(@Valid @RequestBody DominioModel dominioModel, BindingResult result) {
         logger.debug("Actualizando el dominio con datos {}", dominioModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
         return this.dominioService.actualizar(dominioModel);
-
-    }
-
-    /***
-     * Crea un dominio
-     * @param dominioModel dominio a crear
-     * @return dominio creado
-     */
-    @PostMapping(value = "/crear")
-    public DominioModel crear(@Valid DominioModel dominioModel, BindingResult result) {
-        logger.debug("Creando rol con datos {}", dominioModel.toString());
-        if (result.hasErrors()) {
-            throw new InvalidDataException(result);
-        }
-        return this.dominioService.crear(dominioModel);
 
     }
 

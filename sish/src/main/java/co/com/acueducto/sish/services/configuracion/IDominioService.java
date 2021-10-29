@@ -21,4 +21,12 @@ public interface IDominioService {
      * @return DominioModel
      */
     Optional<DominioModel> obtenerPorId(Integer id);
+
+    /***
+     * actualiza la descripcion del dominio
+     * @param dominioModel Identificador,descripcion descripcion
+     */
+    DominioModel actualizar(DominioModel dominioModel);
+
+        
 }

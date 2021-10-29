@@ -95,22 +95,6 @@ public class DominioServiceTest {
         Assertions.assertEquals(dominio,dominios);
     }
 
-    @Test
-    public void crearDominio()  {
 
-        AuditoriaModel auditoriaModel = new AuditoriaModel();
-        auditoriaModel.setIdAuditoria(Long.parseLong("1"));
-        auditoriaModel.setId(2);
-        auditoriaModel.setObjeto("dominiosModel");
-        auditoriaModel.setNombreEntidad("ModelosModelo");
-        auditoriaModel.setOperacion(2);
-        Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
-        Mockito.when(utilidadesJSON.convertirObjetoJson(dominios)).thenReturn("");
-        ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
-        ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
-        ReflectionTestUtils.setField(dominioService,"auditoriaService",auditoriaService);
-        DominioModel dominioList=dominioService.crear(dominios);
-        Assertions.assertEquals(dominioList,dominios);
-    }
 
 }

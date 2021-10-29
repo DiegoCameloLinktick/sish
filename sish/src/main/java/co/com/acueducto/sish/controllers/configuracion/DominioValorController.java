@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /***
- * Clase de definición del servicio REST de los dominios
+ * Clase de definición del servicio REST de los valores dominios
  */
 @RestController
 @RequestMapping("/dominioValor")
@@ -29,6 +29,7 @@ public class DominioValorController {
      * @param id Identificador
      * @return DominioModel
      */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/obtenerPorId/{id}")
     public List<DominioValoresModel> obtenerPorId(@PathVariable("id") Integer id) {
         logger.debug("En obtenerPorId: " +  id);
@@ -40,8 +41,9 @@ public class DominioValorController {
      * @param dominioValorModel Rol a crear
      * @return Rol creado
      */
-    @PostMapping(value = "/crear")
-    public DominioValoresModel crear(@Valid DominioValoresModel dominioValorModel, BindingResult result) {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/crear",method = RequestMethod.POST)
+    public DominioValoresModel crear(@Valid @RequestBody DominioValoresModel dominioValorModel, BindingResult result) {
         logger.debug("Creando valor dominio con datos {}", dominioValorModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
@@ -55,9 +57,10 @@ public class DominioValorController {
      * @param dominioValorModel valor a actualizar
      * @return Rol creado
      */
-    @PostMapping(value = "/actualizar")
-    public DominioValoresModel actualizar(@Valid DominioValoresModel dominioValorModel, BindingResult result) {
-        logger.debug("Actualizando el dominio con datos {}", dominioValorModel.toString());
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/actualizar",method = RequestMethod.POST)
+    public DominioValoresModel actualizar(@Valid @RequestBody DominioValoresModel dominioValorModel, BindingResult result) {
+        logger.debug("Actualizando el valor de dominio con datos {}", dominioValorModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }

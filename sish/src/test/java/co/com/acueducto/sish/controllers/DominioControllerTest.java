@@ -115,12 +115,7 @@ public class DominioControllerTest {
     DominioModel dominio = dominioController.actualizar(dominios,mockBindingResult);
     Assertions.assertEquals(dominio,dominios);
   }
-  @Test
-  public void crear(){
-    Mockito.when(mockBindingResult.hasErrors()).thenReturn(false);
-    DominioModel dominio = dominioController.crear(dominios,mockBindingResult);
-    Assertions.assertEquals(dominio,dominios);
-  }
+
 
 
 }
