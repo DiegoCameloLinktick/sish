@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.models.configuracion;
 
 import co.com.acueducto.sish.models.auditoria.Audit;
+import co.com.acueducto.sish.models.seguridad.RolModel;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -49,25 +50,26 @@ public class ParametroModel extends Audit {
     /***
      *Unidad De medidad   del Parametro
      */
-    @NotNull(message = "la Unidad de medida  del parametro  no puede ser nulo")
-    @Column(name = "ID_UNIDAD_MEDIDA", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "ID_UNIDAD_MEDIDA")
     @Getter @Setter
-    private Integer idUnidadMedida;
+    private DominioValoresModel UnidadMedida;
 
     /***
      *Unidad De medidad   del Parametro
      */
-    @NotNull(message = "el Tipo de parametro   no puede ser nulo")
-    @Column(name = "ID_TIPO_PARAMETRO", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_PARAMETRO")
     @Getter @Setter
-    private Integer idTipoParametro;
+    private DominioValoresModel TipoParametro;
 
     /***
      *Unidad De medidad   del Parametro
      */
-    @NotNull(message = "el Metodo del parametro no puede ser nulo")
-    @Column(name = "ID_METODO", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "ID_METODO")
     @Getter @Setter
-    private Integer idMetodo;
+    private DominioValoresModel Metodo;
+
 }
 

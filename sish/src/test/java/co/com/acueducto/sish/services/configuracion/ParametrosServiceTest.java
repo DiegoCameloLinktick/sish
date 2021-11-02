@@ -54,9 +54,6 @@ public class ParametrosServiceTest {
         parametroModel.setParametro("PRUEBAS");
         parametroModel.setIdParametro(1);
         parametroModel.setCodigo("Pruebas UNI 1");
-        parametroModel.setIdMetodo(1);
-        parametroModel.setIdUnidadMedida(1);
-        parametroModel.setIdTipoParametro(1);
         parametroModel.setDescripcion("pruebas unitarias");
 
         response.add(parametroModel);
@@ -93,13 +90,13 @@ public class ParametrosServiceTest {
         ParametroModel parametrosList=parametroService.actualizar(parametroModel);
         Assertions.assertEquals(parametrosList, parametroModel);
     }
-
-    /*@Test
-    public void obtenerPorId()  {
-        Optional<ParametroModel> parametroList=parametroService.obtenerPorId(anyInt());
+    @Test
+    public void obtenerPorId() {
+        Optional<ParametroModel> parametroList = parametroService.obtenerPorId(anyInt());
         ParametroModel parametro = parametroList.get();
         Assertions.assertEquals(parametro, parametroModel);
-    }*/
+    }
+
     @Test
     public void crearParametro()  {
 

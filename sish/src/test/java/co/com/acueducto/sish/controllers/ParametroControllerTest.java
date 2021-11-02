@@ -64,9 +64,6 @@ public class ParametroControllerTest {
         parametroModel.setParametro("Actuazacion prueba 1");
         parametroModel.setIdParametro(1);
         parametroModel.setCodigo("Parametro1");
-        parametroModel.setIdMetodo(40);
-        parametroModel.setIdUnidadMedida(21);
-        parametroModel.setIdTipoParametro(41);
         parametroModel.setDescripcion("Actualizacion 1");
         valoresList.add(parametroModel);
 
@@ -88,7 +85,7 @@ public class ParametroControllerTest {
         ReflectionTestUtils.setField(parametroService,"parametroRepository", parametroRepository);
 
         Mockito.when(parametroService.obtener()).thenReturn(valoresList);
-        //Mockito.when(parametroService.obtenerPorId(1)).thenReturn(Optional.ofNullable(parametroModel));
+        Mockito.when(parametroService.obtenerPorId(1)).thenReturn(Optional.ofNullable(parametroModel));
         Mockito.when(parametroService.actualizar(parametroModel)).thenReturn(parametroModel);
         Mockito.when(parametroService.crear(parametroModel)).thenReturn(parametroModel);
         ReflectionTestUtils.setField(parametrosController,"parametroService",parametroService);
@@ -101,12 +98,12 @@ public class ParametroControllerTest {
         Assertions.assertEquals(ParametrosList,valoresList);
     }
 
-   /* @Test
+   @Test
     public void obtenerPorId()  {
         Optional<ParametroModel> valoresParametosList = parametrosController.obtenerPorId(1);
         ParametroModel parametros = valoresParametosList.get();
         Assertions.assertEquals(parametros, parametroModel);
-    }*/
+    }
 
     @Test
     public void actualizar(){

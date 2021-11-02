@@ -85,6 +85,8 @@ public class DominioValorControllerTest {
         Mockito.when(dominioValorService.obtenerValoresPorIdDominio(1)).thenReturn(valoresList);
         Mockito.when(dominioValorService.actualizar(dominioValoresModel)).thenReturn(dominioValoresModel);
         Mockito.when(dominioValorService.crear(dominioValoresModel)).thenReturn(dominioValoresModel);
+        Mockito.when(dominioValorService.obtenerValoresPorIdDominio(1)).thenReturn(valoresList);
+        Mockito.when(dominioValorService.obtenerValoresActivosPorIdDominio(1)).thenReturn(valoresList);
         ReflectionTestUtils.setField(dominioValorController,"dominioValorService",dominioValorService);
 
     }
@@ -108,5 +110,18 @@ public class DominioValorControllerTest {
         DominioValoresModel dominio = dominioValorController.crear(dominioValoresModel,mockBindingResult);
         Assertions.assertEquals(dominio,dominioValoresModel);
     }
+
+    @Test
+    public void obtenerValoresPorIdDominio()  {
+        List<DominioValoresModel> valoresDominioList=dominioValorController.obtenerValoresPorIdDominio(1);
+        Assertions.assertEquals(valoresDominioList,valoresList);
+    }
+
+    @Test
+    public void obtenerValoresActivosPorIdDominio()  {
+        List<DominioValoresModel> valoresDominioList=dominioValorController.obtenerValoresActivosPorIdDominio(1);
+        Assertions.assertEquals(valoresDominioList,valoresList);
+    }
+
 
 }
