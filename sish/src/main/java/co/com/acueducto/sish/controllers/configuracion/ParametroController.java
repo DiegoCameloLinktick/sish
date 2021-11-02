@@ -1,7 +1,6 @@
 package co.com.acueducto.sish.controllers.configuracion;
 import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.services.configuracion.ParametroService;
-import co.com.acueducto.sish.services.seguridad.AutenticacionService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +15,11 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/parametros")
-public class ParametrosController {
+public class ParametroController {
     @Autowired
     ParametroService parametroService;
 
-    private static final Logger logger = LoggerFactory.getLogger(ParametrosController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ParametroController.class);
 
     /***
      * Obtiene la lista de todos los Parametros

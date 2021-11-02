@@ -3,10 +3,7 @@ package co.com.acueducto.sish.models.configuracion;
 import co.com.acueducto.sish.models.auditoria.AuditBasico;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import java.sql.Date;
 
 
 /***
@@ -39,19 +36,5 @@ public class DominioModel extends AuditBasico {
     @Getter @Setter
     private String descripcion;
 
-    /***
-     * Fecha en que fue modificado
-     */
-    @Column(name = "fecha_modificacion")
-    @Getter @Setter
-    @LastModifiedDate
-    private Date fechaModificacion;
-
-    /***
-     * Usuario que realizó la modificación
-     */
-    @Column(name = "usuario_modificacion")
-    @Getter @Setter
-    private String usuarioModificacion;
 
 }

@@ -18,6 +18,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -66,7 +67,7 @@ public class DominioServiceTest {
 
     @Test
     public void testObtenerDominio() {
-        ArrayList<DominioModel> dominioList=dominioService.obtener();
+        List<DominioModel> dominioList=dominioService.obtener();
         Assertions.assertEquals(dominioList,response);
     }
 
