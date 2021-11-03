@@ -1,8 +1,6 @@
 package co.com.acueducto.sish.repositories.configuracion;
 
-import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import co.com.acueducto.sish.models.configuracion.EstacionModel;
-import co.com.acueducto.sish.models.configuracion.ParametrosModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -31,7 +29,8 @@ public interface EstacionRepository extends JpaRepository<EstacionModel, Integer
      * @return Verdadero si existe
      */
     @Query("SELECT case when count(e)> 0 then true else false end from EstacionModel e WHERE idEstacion != :idEstacion ")
-    boolean estacionExistente(@Param("idEstacion") Integer idEstacion);
+    boolean estacionExistente(@Param("idEstacion") Integer idEstacion,
+                              @Param("estacion")String estacion);
 
     /***
      * Lista de los dominios del sistema ordenada ascendentemente

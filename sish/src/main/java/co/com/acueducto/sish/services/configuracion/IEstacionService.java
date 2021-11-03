@@ -15,9 +15,21 @@ public interface IEstacionService {
 
     /***
      * Obtiene un dominio por identificador del dominio
-     * @param id Identificador del dominio
      * @return Lista DominioValoresModel
      */
     List<EstacionModel> obtener();
+
+    /***
+     * Crear un valor una estacion
+     * @param estacionModel estacion a crear
+     * @return EstacionModel creado
+     */
+    EstacionModel crear(EstacionModel estacionModel);
+
+    /***
+     * actualiza la estacion
+     * @param estacionModel Identificador
+     */
+    EstacionModel actualizar(EstacionModel estacionModel);
 
 }
