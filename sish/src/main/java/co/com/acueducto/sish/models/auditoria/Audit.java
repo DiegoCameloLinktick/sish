@@ -3,7 +3,7 @@ package co.com.acueducto.sish.models.auditoria;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import sun.util.calendar.LocalGregorianCalendar;
+
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;

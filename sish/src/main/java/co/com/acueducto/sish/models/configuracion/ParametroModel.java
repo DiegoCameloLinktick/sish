@@ -23,7 +23,7 @@ public class ParametroModel extends Audit {
     private Integer idParametro;
 
     /***
-     * Nombre del parametro
+     * Nombre del parámetro
      */
     @NotNull(message = "El Parametro  no puede ser nulo")
     @Size(min = 2, message = "El Nombre del Parametro del valor debe tener al menos dos caracteres")
@@ -32,7 +32,7 @@ public class ParametroModel extends Audit {
     private String parametro;
 
     /***
-     *Codigo  del Parametro
+     *Codigo  del parámetro
      */
     @NotNull(message = "El Codigo del parametro  no puede ser nulo")
     @Column(name = "CODIGO", nullable = false)
@@ -40,7 +40,7 @@ public class ParametroModel extends Audit {
     private String codigo;
 
     /***
-     *Descripcion   del Parametro
+     *Descripcion   del parámetro
      */
     @NotNull(message = "la Descripcion del parametro  no puede ser nulo")
     @Column(name = "DESCRIPCION", nullable = false)
@@ -48,28 +48,28 @@ public class ParametroModel extends Audit {
     private String descripcion;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Unidad De medidad   del parámetro
      */
-    @ManyToOne
-    @JoinColumn(name = "ID_UNIDAD_MEDIDA")
+    @NotNull(message = "la Unidad de medida  del parametro  no puede ser nulo")
+    @Column(name = "ID_UNIDAD_MEDIDA", nullable = false)
     @Getter @Setter
-    private DominioValoresModel UnidadMedida;
+    private Integer idUnidadMedida;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Tipp de parámetro
      */
-    @ManyToOne
-    @JoinColumn(name = "ID_TIPO_PARAMETRO")
+    @NotNull(message = "el Tipo de parametro   no puede ser nulo")
+    @Column(name = "ID_TIPO_PARAMETRO", nullable = false)
     @Getter @Setter
-    private DominioValoresModel TipoParametro;
+    private Integer idTipoParametro;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Método del parámetro
      */
-    @ManyToOne
-    @JoinColumn(name = "ID_METODO")
+    @NotNull(message = "el Metodo del parametro no puede ser nulo")
+    @Column(name = "ID_METODO", nullable = false)
     @Getter @Setter
-    private DominioValoresModel Metodo;
+    private Integer idMetodo;
 
 }
 

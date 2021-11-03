@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
+import co.com.acueducto.sish.dtos.ParametroDTO;
 import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.repositories.configuracion.ParametroRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
@@ -70,6 +71,15 @@ public class ParametroService implements IParametroService {
         return parametroModel;
     }
 
+    /***
+     * Obtiene la lista de los páramtros para la consulta
+     * @return lista de ParametroDTO
+     */
+    public ArrayList<ParametroDTO> obtenerListaParametros() {
+        logger.debug("En obtenerListaParametros");
+        return (ArrayList<ParametroDTO>) parametroRepository.obtenerListaParametros();
+
+    }
 
 }
 

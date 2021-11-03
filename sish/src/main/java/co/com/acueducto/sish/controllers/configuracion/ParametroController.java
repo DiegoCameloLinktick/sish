@@ -1,4 +1,5 @@
 package co.com.acueducto.sish.controllers.configuracion;
+import co.com.acueducto.sish.dtos.ParametroDTO;
 import co.com.acueducto.sish.models.configuracion.ParametroModel;
 import co.com.acueducto.sish.services.configuracion.ParametroService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
@@ -76,6 +77,16 @@ public class ParametroController {
         }
         return this.parametroService.crear(parametroModel);
 
+    }
+    /***
+     * Obtiene la lista de los páramtros para la consulta
+     * @return Lista de ParametroDTO
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/obtenerListaParametros")
+    public List<ParametroDTO> obtenerListaParametros(){
+        logger.debug("En obtenerListaParametros");
+        return parametroService.obtenerListaParametros();
     }
 
 }
