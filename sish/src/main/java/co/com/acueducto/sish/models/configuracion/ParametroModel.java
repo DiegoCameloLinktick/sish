@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.models.configuracion;
 
 import co.com.acueducto.sish.models.auditoria.Audit;
+import co.com.acueducto.sish.models.seguridad.RolModel;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "PARAMETROS")
-public class ParametrosModel  extends Audit {
+public class ParametroModel extends Audit {
     /***
      * Llave primaria
      */
@@ -22,7 +23,7 @@ public class ParametrosModel  extends Audit {
     private Integer idParametro;
 
     /***
-     * Nombre del parametro
+     * Nombre del parámetro
      */
     @NotNull(message = "El Parametro  no puede ser nulo")
     @Size(min = 2, message = "El Nombre del Parametro del valor debe tener al menos dos caracteres")
@@ -31,7 +32,7 @@ public class ParametrosModel  extends Audit {
     private String parametro;
 
     /***
-     *Codigo  del Parametro
+     *Codigo  del parámetro
      */
     @NotNull(message = "El Codigo del parametro  no puede ser nulo")
     @Column(name = "CODIGO", nullable = false)
@@ -39,7 +40,7 @@ public class ParametrosModel  extends Audit {
     private String codigo;
 
     /***
-     *Descripcion   del Parametro
+     *Descripcion   del parámetro
      */
     @NotNull(message = "la Descripcion del parametro  no puede ser nulo")
     @Column(name = "DESCRIPCION", nullable = false)
@@ -47,7 +48,7 @@ public class ParametrosModel  extends Audit {
     private String descripcion;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Unidad De medidad   del parámetro
      */
     @NotNull(message = "la Unidad de medida  del parametro  no puede ser nulo")
     @Column(name = "ID_UNIDAD_MEDIDA", nullable = false)
@@ -55,7 +56,7 @@ public class ParametrosModel  extends Audit {
     private Integer idUnidadMedida;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Tipp de parámetro
      */
     @NotNull(message = "el Tipo de parametro   no puede ser nulo")
     @Column(name = "ID_TIPO_PARAMETRO", nullable = false)
@@ -63,11 +64,12 @@ public class ParametrosModel  extends Audit {
     private Integer idTipoParametro;
 
     /***
-     *Unidad De medidad   del Parametro
+     *Método del parámetro
      */
     @NotNull(message = "el Metodo del parametro no puede ser nulo")
     @Column(name = "ID_METODO", nullable = false)
     @Getter @Setter
     private Integer idMetodo;
+
 }
 

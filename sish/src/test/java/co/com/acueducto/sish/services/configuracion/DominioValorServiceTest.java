@@ -53,6 +53,7 @@ public class DominioValorServiceTest {
         valoresDominioList.add(valoresDominios);
 
         Mockito.when(dominioValorRepository.obtenerValoresPorIdDominio(1)).thenReturn(valoresDominioList);
+        Mockito.when(dominioValorRepository.obtenerValoresActivosPorIdDominio(1)).thenReturn(valoresDominioList);
         Mockito.when(dominioValorRepository.save(valoresDominios)).thenReturn(valoresDominios);
 
         ReflectionTestUtils.setField(dominioValorService,"dominioValorRepository",dominioValorRepository);
@@ -99,6 +100,12 @@ public class DominioValorServiceTest {
         ReflectionTestUtils.setField(dominioValorService,"auditoriaService",auditoriaService);
         DominioValoresModel valorDominio=dominioValorService.actualizar(valoresDominios);
         Assertions.assertEquals(valorDominio,valoresDominios);
+    }
+
+    @Test
+    public void obtenerValoresActivosPorIdDominio(){
+        List<DominioValoresModel> valoresDominioList=dominioValorService.obtenerValoresActivosPorIdDominio(1);
+        Assertions.assertEquals(valoresDominioList,valoresDominioList);
     }
 
 }

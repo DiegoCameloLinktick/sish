@@ -8,6 +8,7 @@ import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -24,9 +25,6 @@ public class DominioValorService implements IDominioValorService{
 
     private static final Logger logger = LoggerFactory.getLogger(DominioValorService.class);
 
-
-
-
     /***
      * Crear un valor dominio
      * @param dominioValorModel valor dominio a crear
@@ -34,6 +32,9 @@ public class DominioValorService implements IDominioValorService{
      */
     public DominioValoresModel crear(DominioValoresModel dominioValorModel)  {
         logger.debug("Creando valores de dominio con datos {}", dominioValorModel.toString());
+        if (dominioValorRepository.valorDominioExistente(dominioValorModel.getIdDominio(),dominioValorModel.getDominioValor())) {
+            throw new DuplicateKeyException("Ya existe valor de dominio con nombre: " + dominioValorModel.getDominioValor());
+        }
         dominioValorModel = dominioValorRepository.save(dominioValorModel);
         auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.CREAR,
                 RolService.class.toString(), dominioValorModel.getIdDominioValor());

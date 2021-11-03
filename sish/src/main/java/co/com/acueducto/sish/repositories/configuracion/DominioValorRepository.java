@@ -34,11 +34,14 @@ public interface DominioValorRepository extends JpaRepository<DominioValoresMode
 
     /***
      * Determina si el nombre del valordominio esta
-     * @param idDominiosValores Identificador del dominio actual
+     * @param idDominio Identificador del dominio actual
+     * @param dominioValor valor del dominio a validar
      * @return Verdadero si existe
      */
-    @Query("SELECT case when count(d)> 0 then true else false end from DominioValoresModel d WHERE idDominiosValores != :idDominiosValores ")
-    boolean valorDominioExistente(@Param("idDominiosValores") Integer idDominiosValores);
+    @Query("SELECT case when count(d)> 0 then true else false end from DominioValoresModel d WHERE idDominio = :idDominio and " +
+            " dominioValor= :dominioValor ")
+    boolean valorDominioExistente(@Param("idDominio") Integer idDominio,
+                                  @Param("dominioValor") String dominioValor);
 
 
 }

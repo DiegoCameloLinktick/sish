@@ -18,6 +18,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -66,7 +67,7 @@ public class DominioServiceTest {
 
     @Test
     public void testObtenerDominio() {
-        ArrayList<DominioModel> dominioList=dominioService.obtener();
+        List<DominioModel> dominioList=dominioService.obtener();
         Assertions.assertEquals(dominioList,response);
     }
 
@@ -95,22 +96,6 @@ public class DominioServiceTest {
         Assertions.assertEquals(dominio,dominios);
     }
 
-    @Test
-    public void crearDominio()  {
 
-        AuditoriaModel auditoriaModel = new AuditoriaModel();
-        auditoriaModel.setIdAuditoria(Long.parseLong("1"));
-        auditoriaModel.setId(2);
-        auditoriaModel.setObjeto("dominiosModel");
-        auditoriaModel.setNombreEntidad("ModelosModelo");
-        auditoriaModel.setOperacion(2);
-        Mockito.when(auditoriaRepository.save(auditoriaModel)).thenReturn(auditoriaModel);
-        Mockito.when(utilidadesJSON.convertirObjetoJson(dominios)).thenReturn("");
-        ReflectionTestUtils.setField(auditoriaService,"utilidadesJSON",utilidadesJSON);
-        ReflectionTestUtils.setField(auditoriaService,"auditoriaRepository",auditoriaRepository);
-        ReflectionTestUtils.setField(dominioService,"auditoriaService",auditoriaService);
-        DominioModel dominioList=dominioService.crear(dominios);
-        Assertions.assertEquals(dominioList,dominios);
-    }
 
 }

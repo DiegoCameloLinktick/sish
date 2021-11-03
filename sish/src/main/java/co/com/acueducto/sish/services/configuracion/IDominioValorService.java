@@ -21,4 +21,19 @@ public interface IDominioValorService {
      * @return Lista DominioValoresModel
      */
     List<DominioValoresModel> obtenerValoresActivosPorIdDominio(Integer id);
+
+    /***
+     * Crear un valor dominio
+     * @param dominioValorModel valor dominio a crear
+     * @return RolModel creado
+     */
+    DominioValoresModel crear(DominioValoresModel dominioValorModel);
+
+    /***
+     * actualiza la descripcion del dominio
+     * @param dominioValorModel Identificador,descripcion descripcion
+     * @return RolModel creado
+     */
+    DominioValoresModel actualizar(DominioValoresModel dominioValorModel);
+
 }

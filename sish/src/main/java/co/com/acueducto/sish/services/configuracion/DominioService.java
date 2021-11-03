@@ -1,13 +1,11 @@
 package co.com.acueducto.sish.services.configuracion;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.configuracion.DominioModel;
 import co.com.acueducto.sish.repositories.configuracion.DominioRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
-import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +28,10 @@ public class DominioService implements IDominioService {
      * Obtiene la lista de todos los dominios
      * @return Lista de DominioModel
      */
-    public ArrayList<DominioModel> obtener() {
+    public List<DominioModel> obtener() {
         logger.debug("En obtenerDominios");
 
-        return (ArrayList<DominioModel>) dominioRepository.findByOrderByDominioAsc();
+        return dominioRepository.findByOrderByDominioAsc();
     }
 
     /***
@@ -52,9 +50,7 @@ public class DominioService implements IDominioService {
      * @param dominioModel Identificador,descripcion descripcion
      */
     public DominioModel actualizar(DominioModel dominioModel){
-
-        logger.debug("Actualizando rol con datos {}", dominioModel.toString());
-
+        logger.debug("Actualizando dominio con datos {}", dominioModel.toString());
         dominioModel= dominioRepository.save(dominioModel);
         auditoriaService.registrarAuditoria(dominioModel, OperacionAuditoriaEnum.ACTUALIZAR,
                 DominioService.class.toString(), dominioModel.getIdDominio());
@@ -62,18 +58,7 @@ public class DominioService implements IDominioService {
 
     }
 
-    /***
-     * Crear un valor dominio
-     * @param dominioModel valor dominio a crear
-     * @return RolModel creado
-     */
-    public DominioModel crear(DominioModel dominioModel)  {
-        logger.debug("Creando valores de dominio con datos {}", dominioModel.toString());
-        dominioModel = dominioRepository.save(dominioModel);
-        auditoriaService.registrarAuditoria(dominioModel, OperacionAuditoriaEnum.CREAR,
-                RolService.class.toString(), dominioModel.getIdDominio());
-        return dominioModel;
-    }
+
 
 
 }
