@@ -1,6 +1,8 @@
 package co.com.acueducto.sish.dtos;
 
 
+import java.util.Date;
+
 public interface ParametroDTO {
     /***
      * Llave primaria
@@ -53,5 +55,33 @@ public interface ParametroDTO {
      */
     String getNombreMetodo();
 
+    /***
+     *estado parámetro
+     */
+    String getActivo();
+    /***
+     *fecha de creacion del parámetro
+     */
+    Date getFechaCreacion();
+    /***
+     *fecha modificacion del parámetro
+     */
+    Date getFechaModificacion();
+    /***
+     *nombre del mfecha de cambio de estado del parámetro
+     */
+    Date getFechaEstado();
+    /***
+     *usuario creacion del parámetro
+     */
+    String getUsuarioCreacion();
+    /***
+     *usuario modificacion del parámetro
+     */
+    String getUsuarioModificacion();
+    /***
+     *usuario que cambia el estado del parámetro
+     */
+    String getUsuarioEstado();
 
 }
