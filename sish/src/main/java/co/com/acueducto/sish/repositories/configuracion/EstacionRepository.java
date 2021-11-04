@@ -29,8 +29,7 @@ public interface EstacionRepository extends JpaRepository<EstacionModel, Integer
      * @return Verdadero si existe
      */
     @Query("SELECT case when count(e)> 0 then true else false end from EstacionModel e WHERE idEstacion != :idEstacion ")
-    boolean estacionExistente(@Param("idEstacion") Integer idEstacion,
-                              @Param("estacion")String estacion);
+    boolean estacionExistente(@Param("idEstacion") Integer idEstacion);
 
     /***
      * Lista de los dominios del sistema ordenada ascendentemente

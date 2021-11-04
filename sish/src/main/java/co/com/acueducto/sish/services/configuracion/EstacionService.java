@@ -67,7 +67,7 @@ public class EstacionService implements IEstacionService{
      */
     public EstacionModel crear(EstacionModel estacionModel)  {
         logger.debug("Creando valores de dominio con datos {}", estacionModel.toString());
-        if (estacionRepository.estacionExistente(estacionModel.getIdEstacion(),estacionModel.getEstacion())) {
+        if (estacionRepository.estacionExistente(estacionModel.getIdEstacion())) {
             throw new DuplicateKeyException("Ya existe estacion con nombre: " + estacionModel.getEstacion());
         }
         estacionModel = estacionRepository.save(estacionModel);
