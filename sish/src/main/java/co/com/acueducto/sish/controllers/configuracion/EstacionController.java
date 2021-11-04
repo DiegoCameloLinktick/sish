@@ -66,5 +66,17 @@ public class EstacionController {
         return this.estacionService.obtener();
     }
 
+    /***
+     * Obtiene las estaciones por id
+     * @param id Identificador de la estacion
+     * @return Lista EstacionModel
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping( path = "/obtenerPorIdEstacion/{id}")
+    public EstacionModel obtenerPorIdEstacion(@PathVariable("id") Integer id) {
+        logger.debug("En tener estaciones por id: " + id);
+        return this.estacionService.obtenerPorIdEstacion(id);
+    }
+
 
 }
