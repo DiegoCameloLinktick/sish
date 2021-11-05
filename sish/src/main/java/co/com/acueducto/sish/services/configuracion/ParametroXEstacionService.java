@@ -1,6 +1,8 @@
 package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
+import co.com.acueducto.sish.dtos.ParametroDTO;
+import co.com.acueducto.sish.dtos.configuracion.ParametroXEstacionDTO;
 import co.com.acueducto.sish.models.configuracion.ParametroXEstacionModel;
 import co.com.acueducto.sish.repositories.configuracion.ParametroXEstacionRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /***
@@ -72,6 +75,16 @@ public class ParametroXEstacionService  implements  IParametroXEstacionService{
     public List<ParametroXEstacionModel> obtenerParametrosXEstacion() {
         logger.debug("En obtener lista de parametros por estacion");
         return parametroXEstacionRepository.obtenerParametrosXEstacion();
+    }
+
+    /***
+     * Obtiene la lista de los páramtros x estacion para la consulta
+     * @return lista de ParametroXEstacionDTO
+     */
+    public List<ParametroXEstacionDTO> obtenerListaParametrosXEstacion(Integer idParametroXEstacion) {
+        logger.debug("En obtenerListaParametros");
+        return parametroXEstacionRepository.obtenerListaParametrosXEstacion(idParametroXEstacion);
+
     }
 
 
