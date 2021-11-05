@@ -1,11 +1,12 @@
 package co.com.acueducto.sish.models.seguridad;
 
-import co.com.acueducto.sish.models.auditoria.Audit;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /***
  *  Clase de definición de la tabla de los permisos realacionados a un rol del sistema
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "permisos_x_rol")
 @ToString
-public class PermisoXRolModel extends Audit {
+public class PermisoXRolModel {
     /***
      * Llave primaria
      */
@@ -27,18 +28,20 @@ public class PermisoXRolModel extends Audit {
     /***
      * Identificador del rol
      */
-    @ManyToOne
-    @JoinColumn(name = "id_rol")
-    @Getter @Setter
-    private RolModel rol;
+    @NotNull(message = "El rol no puede ser nulo")
+    @Column(name = "id_rol", nullable = false)
+    @Getter
+    @Setter
+    private Integer idRol;
 
     /***
      * Identificador del permiso
      */
-    @ManyToOne
-    @JoinColumn(name = "id_permiso")
-    @Getter @Setter
-    private PermisoModel permiso;
+    @NotNull(message = "El permiso del rol no puede ser nulo")
+    @Column(name = "id_permiso", nullable = false)
+    @Getter
+    @Setter
+    private Integer idPermiso;
 
 
 }
