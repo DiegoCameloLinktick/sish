@@ -1,5 +1,7 @@
 package co.com.acueducto.sish.controllers.configuracion;
 
+import co.com.acueducto.sish.dtos.ParametroDTO;
+import co.com.acueducto.sish.dtos.configuracion.ParametroXEstacionDTO;
 import co.com.acueducto.sish.models.configuracion.ParametroXEstacionModel;
 import co.com.acueducto.sish.services.configuracion.ParametroXEstacionService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
@@ -42,7 +44,7 @@ public class ParametroXEstacionController {
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/obtener")
-    public List<ParametroXEstacionModel> obtenerPorId() {
+    public List<ParametroXEstacionModel> obtener() {
         logger.debug("En obtener parametro por estacion list ");
         return this.parametroXEstacionService.obtenerParametrosXEstacion();
     }
@@ -77,6 +79,17 @@ public class ParametroXEstacionController {
         }
         return this.parametroXEstacionService.actualizar(parametroXEstacionModel);
 
+    }
+
+    /***
+     * Obtiene la lista de los páramtros para la consulta
+     * @return Lista de ParametroDTO
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/obtenerListaParametrosXEstacion/{id}")
+    public List<ParametroXEstacionDTO> obtenerListaParametrosXEstacion(@PathVariable("id") Integer id){
+        logger.debug("En obtenerListaParametrosXEstacion");
+        return parametroXEstacionService.obtenerListaParametrosXEstacion(id);
     }
 
 }
