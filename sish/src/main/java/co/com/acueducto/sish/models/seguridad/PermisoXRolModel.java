@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "permisos_x_rol")
 @ToString
-public class PermisoXRolModel extends Audit {
+public class PermisoXRolModel  {
     /***
      * Llave primaria
      */
@@ -27,16 +27,15 @@ public class PermisoXRolModel extends Audit {
     /***
      * Identificador del rol
      */
-    @ManyToOne
-    @JoinColumn(name = "id_rol")
+    @Column(name = "id_rol", nullable = false)
     @Getter @Setter
-    private RolModel rol;
+    private RolModel idRol;
 
     /***
      * Identificador del permiso
      */
     @ManyToOne
-    @JoinColumn(name = "id_permiso")
+    @Column(name = "id_permiso",  nullable = false)
     @Getter @Setter
     private PermisoModel permiso;
 
