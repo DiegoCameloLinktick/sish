@@ -20,17 +20,30 @@ public interface ParametroRepository extends JpaRepository<ParametroModel, Integ
      * Obtiene la lista de los páramtros para la consulta
      * @return lista de ParametroDTO
      */
-    @Query(value = "SELECT p.id_parametro as idParametro," +
+    @Query(value = "SELECT p.id_parametro as idParametro, " +
             "p.parametro as parametro, " +
             "p.codigo as codigo, " +
             "p.descripcion as descripcion, " +
             "p.id_unidad_medida as idUnidadMedida, " +
             "p.id_tipo_parametro as idTipoParametro, " +
             "p.id_metodo as idMetodo, " +
-            "'dd' as nombreUnidadMedida, " +
-            "'xx' as nombreTipoParametro, " +
-            "'yy' as nombreMetodo " +
-            "FROM PARAMETROS p ", nativeQuery = true)
+            "p.ACTIVO as activo, " +
+            "p.FECHA_CREACION  AS fechaCreacion, " +
+            "p.FECHA_MODIFICACION  AS fechaModificacion, " +
+            "p.FECHA_ESTADO AS fechaEstado, " +
+            "p.USUARIO_CREACION AS usuarioCreacion, " +
+            "p.USUARIO_MODIFICACION AS usuarioModificacion, " +
+            "p.USUARIO_ESTADO AS usuarioEstado, " +
+            "d.DOMINIO_VALOR as nombreUnidadMedida, " +
+            "d2.DOMINIO_VALOR as nombreTipoParametro, " +
+            "d3.DOMINIO_VALOR as nombreMetodo " +
+            "FROM PARAMETROS p " +
+            "INNER JOIN DOMINIOS_VALORES d " +
+            "ON d.ID_DOMINIO_VALOR  = p.ID_TIPO_PARAMETRO " +
+            "INNER JOIN DOMINIOS_VALORES d2 " +
+            "ON d2.ID_DOMINIO_VALOR  = p.ID_UNIDAD_MEDIDA " +
+            "INNER JOIN DOMINIOS_VALORES d3 " +
+            "ON d3.ID_DOMINIO_VALOR  = p.ID_METODO ", nativeQuery = true)
     List<ParametroDTO> obtenerListaParametros();
 
 }

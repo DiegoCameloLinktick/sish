@@ -28,7 +28,7 @@ public class DominioValorService implements IDominioValorService{
     /***
      * Crear un valor dominio
      * @param dominioValorModel valor dominio a crear
-     * @return RolModel creado
+     * @return DominioValoresModel creado
      */
     public DominioValoresModel crear(DominioValoresModel dominioValorModel)  {
         logger.debug("Creando valores de dominio con datos {}", dominioValorModel.toString());
@@ -46,7 +46,7 @@ public class DominioValorService implements IDominioValorService{
      * @param dominioValorModel Identificador,descripcion descripcion
      */
     public DominioValoresModel actualizar(DominioValoresModel dominioValorModel){
-        logger.debug("Actualizando rol con datos {}", dominioValorModel.toString());
+        logger.debug("Actualizando valor docminio con datos {}", dominioValorModel.toString());
         dominioValorModel= dominioValorRepository.save(dominioValorModel);
         auditoriaService.registrarAuditoria(dominioValorModel, OperacionAuditoriaEnum.ACTUALIZAR,
                 DominioService.class.toString(), dominioValorModel.getIdDominioValor());

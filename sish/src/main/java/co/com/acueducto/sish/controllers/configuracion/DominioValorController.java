@@ -21,7 +21,7 @@ public class DominioValorController {
 
     @Autowired
     DominioValorService dominioValorService;
-    private static final Logger logger = LoggerFactory.getLogger(DominioController.class);
+    private static final Logger logger = LoggerFactory.getLogger(DominioValorController.class);
 
 
     /***
