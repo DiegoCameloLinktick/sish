@@ -51,7 +51,7 @@ public class ParametroXEstacionService  implements  IParametroXEstacionService{
      * @param parametroXEstacionModel Identificador,descripcion
      */
     public ParametroXEstacionModel actualizar(ParametroXEstacionModel parametroXEstacionModel){
-        logger.debug("Actualizando valor docminio con datos {}", parametroXEstacionModel.toString());
+        logger.debug("Actualizando parametro por estacion con datos {}", parametroXEstacionModel.toString());
         parametroXEstacionModel= parametroXEstacionRepository.save(parametroXEstacionModel);
         auditoriaService.registrarAuditoria(parametroXEstacionModel, OperacionAuditoriaEnum.ACTUALIZAR,
                 DominioService.class.toString(), parametroXEstacionModel.getIdParametroXEstacion());
