@@ -74,4 +74,24 @@ public class DominioValorService implements IDominioValorService{
         return dominioValorRepository.obtenerValoresActivosPorIdDominio(id);
     }
 
+    /***
+     * Obtiene los valores de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    public List<DominioValoresModel> obtenerValoresPorIdDominioOrden(Integer id) {
+        logger.debug("En obtenerValoresPorId: " + id);
+        return dominioValorRepository.obtenerValoresPorIdDominioOrden(id);
+    }
+
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    public List<DominioValoresModel> obtenerValoresActivosPorIdDominioOrden(Integer id) {
+        logger.debug("En obtenerValoresActivosPorIdDominio: " + id);
+        return dominioValorRepository.obtenerValoresActivosPorIdDominioOrden(id);
+    }
+
 }

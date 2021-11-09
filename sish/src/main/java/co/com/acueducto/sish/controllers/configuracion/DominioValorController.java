@@ -91,4 +91,31 @@ public class DominioValorController {
         logger.debug("En obtenerValoresActivosPorIdDominio: " +  id);
         return this.dominioValorService.obtenerValoresActivosPorIdDominio(id);
     }
+
+
+    /***
+     * Obtiene los valores de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping( path = "/obtenerValoresPorIdDominioOrden/{id}")
+    public List<DominioValoresModel> obtenerValoresPorIdDominioOrden(@PathVariable("id") Integer id) {
+        logger.debug("En obtenerValoresPorIdDominio: " +  id);
+        return this.dominioValorService.obtenerValoresPorIdDominioOrden(id);
+    }
+
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping( path = "/obtenerValoresActivosPorIdDominioOrden/{id}")
+    public List<DominioValoresModel> obtenerValoresActivosPorIdDominioOrden(@PathVariable("id") Integer id) {
+        logger.debug("En obtenerValoresActivosPorIdDominio: " +  id);
+        return this.dominioValorService.obtenerValoresActivosPorIdDominioOrden(id);
+    }
+
+
 }

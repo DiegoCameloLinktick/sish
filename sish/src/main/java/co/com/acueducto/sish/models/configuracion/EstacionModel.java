@@ -32,14 +32,14 @@ public class EstacionModel extends AuditBasico {
     @Setter
     private Integer idEstacion;
 
-    /***
-     *nombre de la estacion
-     */
-    @NotNull(message = "El valor no puede ser nulo")
-    @Size(min = 2, message = "El valor debe tener al menos dos caracteres")
-    @Column(name = "ESTACION", nullable = false)
-    @Getter @Setter
-    private String estacion;
+        /***
+         *nombre de la estacion
+         */
+        @NotNull(message = "El valor no puede ser nulo")
+        @Size(min = 2, message = "El valor debe tener al menos dos caracteres")
+        @Column(name = "ESTACION", nullable = false)
+        @Getter @Setter
+        private String estacion;
 
     /***
      *codigoEstacionEaab
