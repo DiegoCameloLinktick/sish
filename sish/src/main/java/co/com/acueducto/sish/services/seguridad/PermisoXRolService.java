@@ -10,6 +10,7 @@ import co.com.acueducto.sish.services.configuracion.DominioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,5 +58,21 @@ public class PermisoXRolService implements IPermisoXRolService{
                 DominioService.class.toString(), permisoXRolModel.getIdPermiso());
         return permisoXRolModel;
 
+    }
+
+    /***
+     * Crear una relacion de parametros por estacion
+     * @param permisoXRolModel valor de parametro por estacion a crear
+     * @return ParametroXEstacionModel creado
+     */
+    public PermisoXRolModel crear(PermisoXRolModel permisoXRolModel)  {
+        logger.debug("Creando valores de permisos por rol {}", permisoXRolModel.toString());
+        if (permisoXRolRepository.permisoXRolExistente(permisoXRolModel.getIdPermiso(),permisoXRolModel.getIdRol())) {
+            throw new DuplicateKeyException("Ya existe valor del permiso por rol : " + permisoXRolModel.toString());
+        }
+        permisoXRolModel = permisoXRolRepository.save(permisoXRolModel);
+        auditoriaService.registrarAuditoria(permisoXRolModel, OperacionAuditoriaEnum.CREAR,
+                RolService.class.toString(), permisoXRolModel.getIdPermisoXRol());
+        return permisoXRolModel;
     }
 }

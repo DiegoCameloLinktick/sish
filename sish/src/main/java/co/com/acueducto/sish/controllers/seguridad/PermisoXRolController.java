@@ -1,6 +1,7 @@
 package co.com.acueducto.sish.controllers.seguridad;
 
 import co.com.acueducto.sish.dtos.seguridad.PermisoXRolDTO;
+import co.com.acueducto.sish.models.configuracion.ParametroXEstacionModel;
 import co.com.acueducto.sish.models.seguridad.PermisoXRolModel;
 import co.com.acueducto.sish.services.seguridad.PermisoXRolService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
@@ -61,6 +62,22 @@ public class PermisoXRolController {
             throw new InvalidDataException(result);
         }
         return this.permisoXRolService.actualizar(permisoXRolModel);
+
+    }
+
+    /***
+     * Crea un permisoXRolModel
+     * @param permisoXRolModel permiso por rol a crear
+     * @return permisoXRolModel creado
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/crear",method = RequestMethod.POST)
+    public PermisoXRolModel crear(@Valid @RequestBody PermisoXRolModel permisoXRolModel, BindingResult result) {
+        logger.debug("Creando permiso por rol con datos {}", permisoXRolModel.toString());
+        if (result.hasErrors()) {
+            throw new InvalidDataException(result);
+        }
+        return this.permisoXRolService.crear(permisoXRolModel);
 
     }
 

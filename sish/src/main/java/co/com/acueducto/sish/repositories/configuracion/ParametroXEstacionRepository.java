@@ -28,11 +28,13 @@ public interface ParametroXEstacionRepository extends JpaRepository<ParametroXEs
 
     /***
      * Determina si el nombre del valordominio esta
-     * @param idParametroXEstacion Identificador
+     * @param idParametro Identificador
      * @return Verdadero si existe
      */
-    @Query("SELECT case when count(pxe)> 0 then true else false end from ParametroXEstacionModel pxe WHERE idParametroXEstacion = :idParametroXEstacion ")
-    boolean valorParametroxEstacionExistente(@Param("idParametroXEstacion") Integer idParametroXEstacion);
+    @Query("SELECT case when count(pxe)> 0 then true else false end from ParametroXEstacionModel pxe " +
+            " WHERE idParametro = :idParametro AND idEstacion = :idEstacion ")
+    boolean valorParametroxEstacionExistente(@Param("idParametro") Integer idParametro,
+                                             @Param("idEstacion")Integer idEstacion);
 
 
     /***
