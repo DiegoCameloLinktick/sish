@@ -22,7 +22,7 @@ public class PermisoModel extends Audit {
     @Column(name = "id_permiso", unique = true, nullable = false)
     @Getter
     @Setter
-    private Long idPermiso;
+    private Integer idPermiso;
 
     /***
      * Nombre del permiso

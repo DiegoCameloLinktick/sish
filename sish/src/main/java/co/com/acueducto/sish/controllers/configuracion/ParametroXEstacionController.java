@@ -23,7 +23,7 @@ public class ParametroXEstacionController {
 
     @Autowired
     ParametroXEstacionService parametroXEstacionService;
-    private static final Logger logger = LoggerFactory.getLogger(DominioValorController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ParametroXEstacionController.class);
 
 
     /***
@@ -52,7 +52,7 @@ public class ParametroXEstacionController {
     /***
      * Crea un parametroXEstacionModel
      * @param parametroXEstacionModel Rol a crear
-     * @return Rol creado
+     * @return parametroXEstacionModel creado
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/crear",method = RequestMethod.POST)
@@ -68,12 +68,12 @@ public class ParametroXEstacionController {
     /***
      * Actualizar un parametro x estacion
      * @param parametroXEstacionModel valor a actualizar
-     * @return Rol creado
+     * @return parametroXEstacionModel Actualizado
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/actualizar",method = RequestMethod.POST)
     public ParametroXEstacionModel actualizar(@Valid @RequestBody ParametroXEstacionModel parametroXEstacionModel, BindingResult result) {
-        logger.debug("Actualizando el valor de dominio con datos {}", parametroXEstacionModel.toString());
+        logger.debug("Actualizando el valor de un parametro por estacion con datos {}", parametroXEstacionModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
@@ -83,7 +83,7 @@ public class ParametroXEstacionController {
 
     /***
      * Obtiene la lista de los páramtros para la consulta
-     * @return Lista de ParametroDTO
+     * @return Lista de ParametroXEstacionDTO
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/obtenerListaParametrosXEstacion/{id}")
