@@ -43,7 +43,7 @@ public class PermisoXRolController {
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/obtenerListaPermisosXRolId/{id}")
-    public List<PermisoXRolDTO> obtenerListaParametrosXEstacion(@PathVariable("id") Integer id){
+    public List<PermisoXRolDTO> obtenerListaPermisosXRolId(@PathVariable("id") Integer id){
         logger.debug("En obtenerListaParametrosXEstacion");
         return permisoXRolService.obtenerListaPermmisosXRol(id);
     }

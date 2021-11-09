@@ -45,6 +45,6 @@ public interface PermisoXRolRepository extends JpaRepository<PermisoXRolModel, I
             "ON p.ID_PERMISO = pxr.ID_PERMISO  " +
             "INNER JOIN ROLES r " +
             "ON r.ID_ROL =pxr.ID_ROL " +
-            "WHERE r.ID_ROL = : idRol", nativeQuery = true)
+            "WHERE r.ID_ROL = :idRol", nativeQuery = true)
     List<PermisoXRolDTO> obtenerListaPermmisosXRol(@Param("idRol") Integer idRol);
 }

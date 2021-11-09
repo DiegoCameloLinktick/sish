@@ -36,4 +36,17 @@ public interface IDominioValorService {
      */
     DominioValoresModel actualizar(DominioValoresModel dominioValorModel);
 
+    /***
+     * Obtiene los valores activos de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+     List<DominioValoresModel> obtenerValoresActivosPorIdDominioOrden(Integer id);
+
+    /***
+     * Obtiene los valores de un dominio por identificador del dominio
+     * @param id Identificador del dominio
+     * @return Lista DominioValoresModel
+     */
+     List<DominioValoresModel> obtenerValoresPorIdDominioOrden(Integer id);
 }

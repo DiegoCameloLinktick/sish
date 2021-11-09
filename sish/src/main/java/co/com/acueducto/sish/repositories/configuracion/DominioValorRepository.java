@@ -36,14 +36,14 @@ public interface DominioValorRepository extends JpaRepository<DominioValoresMode
      * Obtiene una lista de valores realacionados con el dominio
      * @return lista de DominioValoresModel
      */
-    @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio  order by dominioValor desc")
+    @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio  order by orden desc")
     List<DominioValoresModel> obtenerValoresPorIdDominioOrden(@Param("idDominio") Integer idDominio);
 
     /***
      * Obtiene una lista de valores activos realacionados con el dominio
      * @return lista de DominioValoresModel
      */
-    @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio and activo = 'S' ")
+    @Query("SELECT d FROM DominioValoresModel d WHERE idDominio = :idDominio and activo = 'S' order by orden desc")
     List<DominioValoresModel> obtenerValoresActivosPorIdDominioOrden(@Param("idDominio") Integer idDominio);
 
 
