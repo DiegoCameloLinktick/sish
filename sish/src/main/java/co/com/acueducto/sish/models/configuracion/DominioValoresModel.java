@@ -46,6 +46,12 @@ public class DominioValoresModel extends Audit {
     @Getter @Setter
     private String dominioValor;
 
+    /***
+     *orden de insercion de los valores del dominio
+     */
+    @Column(name = "ORDEN", nullable = false)
+    @Getter @Setter
+    private Integer orden;
 
 
 

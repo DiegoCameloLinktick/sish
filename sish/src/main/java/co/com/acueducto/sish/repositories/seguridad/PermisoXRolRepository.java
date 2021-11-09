@@ -21,11 +21,13 @@ public interface PermisoXRolRepository extends JpaRepository<PermisoXRolModel, I
 
     /***
      * Determina si el permiso del rol esta
-     * @param idPermisoXRol Identificador
+     * @param idPermiso Identificador
      * @return Verdadero si existe
      */
-    @Query("SELECT case when count(pxr)> 0 then true else false end from PermisoXRolModel pxr WHERE idPermisoXRol != :idPermisoXRol ")
-    boolean permisoXRolExistente(@Param("idPermisoXRol") Integer idPermisoXRol);
+    @Query("SELECT case when count(pxr)> 0 then true else false end from PermisoXRolModel pxr " +
+            "WHERE idPermiso != :idPermiso AND idRol = :idRol")
+    boolean permisoXRolExistente(@Param("idPermiso") Integer idPermiso,
+                                 @Param("idRol")Integer idRol);
 
 
     @Query(value = "SELECT " +

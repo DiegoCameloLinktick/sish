@@ -37,8 +37,8 @@ public class ParametroXEstacionService  implements  IParametroXEstacionService{
      */
     public ParametroXEstacionModel crear(ParametroXEstacionModel parametroXEstacionModel)  {
         logger.debug("Creando valores de parametros por estacion {}", parametroXEstacionModel.toString());
-        if (parametroXEstacionRepository.valorParametroxEstacionExistente(parametroXEstacionModel.getIdParametroXEstacion())) {
-            throw new DuplicateKeyException("Ya existe valor del parametro: " + parametroXEstacionModel.getIdParametroXEstacion());
+        if (parametroXEstacionRepository.valorParametroxEstacionExistente(parametroXEstacionModel.getIdParametro(),parametroXEstacionModel.getIdEstacion())) {
+            throw new DuplicateKeyException("Ya existe valor del parametro: " + parametroXEstacionModel.toString());
         }
         parametroXEstacionModel = parametroXEstacionRepository.save(parametroXEstacionModel);
         auditoriaService.registrarAuditoria(parametroXEstacionModel, OperacionAuditoriaEnum.CREAR,
