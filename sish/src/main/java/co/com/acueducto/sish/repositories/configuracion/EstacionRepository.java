@@ -32,8 +32,8 @@ public interface EstacionRepository extends JpaRepository<EstacionModel, Integer
     boolean estacionExistente(@Param("idEstacion") Integer idEstacion);
 
     /***
-     * Lista de los dominios del sistema ordenada ascendentemente
-     * @return Lista de DominioModel
+     * Lista de las estaciones del sistema ordenada ascendentemente
+     * @return Lista de EstacionModel
      */
     @Query("SELECT e FROM EstacionModel e")
     List<EstacionModel> findByOrderByEstacionesAsc();

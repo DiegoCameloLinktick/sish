@@ -23,7 +23,7 @@ public class PermisoXRolModel {
     @Column(name = "id_permiso_x_rol", unique = true, nullable = false)
     @Getter
     @Setter
-    private Long idPermisoXRol;
+    private Integer idPermisoXRol;
 
     /***
      * Identificador del rol
