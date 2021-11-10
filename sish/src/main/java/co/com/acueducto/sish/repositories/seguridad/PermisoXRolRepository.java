@@ -3,6 +3,7 @@ package co.com.acueducto.sish.repositories.seguridad;
 import co.com.acueducto.sish.dtos.seguridad.PermisoXRolDTO;
 import co.com.acueducto.sish.models.seguridad.PermisoXRolModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,10 @@ public interface PermisoXRolRepository extends JpaRepository<PermisoXRolModel, I
     boolean permisoXRolExistente(@Param("idPermiso") Integer idPermiso,
                                  @Param("idRol")Integer idRol);
 
-
+    /***
+     * Lista de los permisos por rol
+     * @return Lista de PermisoXRolDTO
+     */
     @Query(value = "SELECT " +
             "p.PERMISO AS permiso, " +
             "p.DESCRIPCION AS descripcionPermiso, " +
@@ -47,4 +51,20 @@ public interface PermisoXRolRepository extends JpaRepository<PermisoXRolModel, I
             "ON r.ID_ROL =pxr.ID_ROL " +
             "WHERE r.ID_ROL = :idRol", nativeQuery = true)
     List<PermisoXRolDTO> obtenerListaPermmisosXRol(@Param("idRol") Integer idRol);
+
+    /***
+     * eliminacion de los permisos por rol
+     */
+    @Modifying
+    @Query(value="DELETE FROM PermisoXRolModel pxr" +
+            " where idPermisoXRol =:idPermisoXRol",nativeQuery = true)
+    void deletePermisoXRol(@Param("idPermisoXRol") Integer idPermisoXRol);
+
+    /***
+     *  permisos por rol
+     * @return PermisoXRolDTO
+     */
+    @Query(value="SELECT pxe FROM PermisoXRolModel pxe WHERE idPermisoXRol =:idPermisoXRol",nativeQuery = true)
+    PermisoXRolModel obtenerPorId (@Param("idPermisoXRol")Integer idPermisoXRol);
+
 }
