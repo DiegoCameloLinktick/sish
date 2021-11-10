@@ -37,9 +37,9 @@ public class DominioValorController {
     }
 
     /***
-     * Crea un rol
-     * @param dominioValorModel Rol a crear
-     * @return Rol creado
+     * Crea un dominioValorModel
+     * @param dominioValorModel valor dominio a crear
+     * @return dominioValorModel creado
      */
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/crear",method = RequestMethod.POST)
