@@ -21,6 +21,7 @@ public interface ParametroRepository extends JpaRepository<ParametroModel, Integ
      * @return lista de ParametroDTO
      */
     @Query(value = "SELECT p.id_parametro as idParametro, " +
+            "p.ID_VARIABLE AS idVariable," +
             "p.codigo as codigo, " +
             "p.descripcion as descripcion, " +
             "p.id_unidad_medida as idUnidadMedida, " +

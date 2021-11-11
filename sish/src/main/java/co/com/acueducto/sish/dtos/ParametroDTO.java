@@ -8,11 +8,15 @@ public interface ParametroDTO {
      * Llave primaria
      */
     Integer getIdParametro();
+    /***
+     * id Varible
+     */
+    Integer getIdVariable();
 
     /***
      *Codigo  del parámetro
      */
-    String getCodigo();
+    Integer getCodigo();
 
     /***
      *Descripcion del parámetro
