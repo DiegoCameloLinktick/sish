@@ -55,7 +55,7 @@ public class TipoArchivoCampoController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/crear",method = RequestMethod.POST)
     public TipoArchivoCampoModel crear(@Valid @RequestBody TipoArchivoCampoModel tipoArchivoCampoModel, BindingResult result) {
-        logger.debug("Creando tipoArchivoConfiguradoModel con datos {}", tipoArchivoCampoModel.toString());
+        logger.debug("Creando tipoArchivoCampoModel con datos {}", tipoArchivoCampoModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }
@@ -71,7 +71,7 @@ public class TipoArchivoCampoController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/actualizar",method = RequestMethod.POST)
     public TipoArchivoCampoModel actualizar(@Valid @RequestBody TipoArchivoCampoModel tipoArchivoCampoModel, BindingResult result) {
-        logger.debug("Actualizando el valor de dominio con datos {}", tipoArchivoCampoModel.toString());
+        logger.debug("Actualizando el tipo archivo campo con datos {}", tipoArchivoCampoModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }

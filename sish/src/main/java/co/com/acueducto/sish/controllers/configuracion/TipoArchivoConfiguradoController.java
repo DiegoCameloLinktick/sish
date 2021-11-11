@@ -1,8 +1,6 @@
 package co.com.acueducto.sish.controllers.configuracion;
 
-import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import co.com.acueducto.sish.models.configuracion.TipoArchivoConfiguradoModel;
-import co.com.acueducto.sish.services.configuracion.DominioValorService;
 import co.com.acueducto.sish.services.configuracion.TipoArchivoConfiguradoService;
 import co.com.acueducto.sish.util.excepcion.InvalidDataException;
 import org.slf4j.Logger;

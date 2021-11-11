@@ -1,6 +1,5 @@
 package co.com.acueducto.sish.repositories.configuracion;
 
-import co.com.acueducto.sish.models.configuracion.DominioValoresModel;
 import co.com.acueducto.sish.models.configuracion.TipoArchivoConfiguradoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
