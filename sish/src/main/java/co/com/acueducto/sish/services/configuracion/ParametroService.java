@@ -49,7 +49,7 @@ public class ParametroService implements IParametroService {
      */
     public ParametroModel actualizar(ParametroModel parametroModel){
 
-        logger.debug("Actualizando rol con datos {}", parametroModel.toString());
+        logger.debug("Actualizando parametro con datos {}", parametroModel.toString());
 
         parametroModel = parametroRepository.save(parametroModel);
         auditoriaService.registrarAuditoria(parametroModel, OperacionAuditoriaEnum.ACTUALIZAR,

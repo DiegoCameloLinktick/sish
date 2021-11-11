@@ -36,7 +36,7 @@ public class ParametroModel extends Audit {
     @NotNull(message = "El Codigo del parametro  no puede ser nulo")
     @Column(name = "CODIGO", nullable = false)
     @Getter @Setter
-    private String codigo;
+    private Integer codigo;
 
     /***
      *Descripcion   del parámetro

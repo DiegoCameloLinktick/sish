@@ -71,7 +71,7 @@ public class ParametroController {
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/crear", method = RequestMethod.POST)
     public ParametroModel crear(@Valid @RequestBody ParametroModel parametroModel, BindingResult result) {
-        logger.debug("Creando rol con datos {}", parametroModel.toString());
+        logger.debug("Creando parametro con datos {}", parametroModel.toString());
         if (result.hasErrors()) {
             throw new InvalidDataException(result);
         }

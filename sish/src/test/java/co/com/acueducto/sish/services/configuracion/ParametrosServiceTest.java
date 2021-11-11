@@ -52,7 +52,7 @@ public class ParametrosServiceTest {
 
         parametroModel = new ParametroModel();
         parametroModel.setIdParametro(1);
-        parametroModel.setCodigo("Pruebas UNI 1");
+        parametroModel.setCodigo(1);
         parametroModel.setDescripcion("pruebas unitarias");
 
         response.add(parametroModel);
