@@ -81,5 +81,17 @@ public class PermisoXRolController {
 
     }
 
+    /***
+     * Eliminar un permiso por rol
+     * @return permiso por rol eliminado
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @RequestMapping(value = "/eliminar/{id}",method = RequestMethod.POST)
+    public PermisoXRolModel eliminar(@PathVariable("id") Integer id) {
+        logger.debug("En eliminar parametro por estacion con id: " + id);
+        return this.permisoXRolService.eliminarPermmisosXRol(id);
+
+    }
+
 
 }

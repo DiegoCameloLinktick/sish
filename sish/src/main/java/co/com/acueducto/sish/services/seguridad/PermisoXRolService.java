@@ -75,4 +75,17 @@ public class PermisoXRolService implements IPermisoXRolService{
                 RolService.class.toString(), permisoXRolModel.getIdPermisoXRol());
         return permisoXRolModel;
     }
+
+    /***
+     * Elimina  los permisos x rol
+     * @return lista de PermisoXRolDTO
+     */
+    public PermisoXRolModel eliminarPermmisosXRol(Integer idPermisoXRol) {
+        logger.debug("En eliminarPermmisosXRol");
+        PermisoXRolModel permisoXRolModel =permisoXRolRepository.obtenerPorId(idPermisoXRol);
+        permisoXRolRepository.deletePermisoXRol(idPermisoXRol);
+        return permisoXRolModel;
+
+    }
+
 }
