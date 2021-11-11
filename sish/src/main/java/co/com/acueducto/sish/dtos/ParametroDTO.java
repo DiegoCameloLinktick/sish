@@ -10,11 +10,6 @@ public interface ParametroDTO {
     Integer getIdParametro();
 
     /***
-     *Nombre  del parámetro
-     */
-    String getParametro();
-
-    /***
      *Codigo  del parámetro
      */
     String getCodigo();
@@ -39,6 +34,10 @@ public interface ParametroDTO {
      */
     Integer getIdMetodo();
 
+    /***
+     * variable del parametro
+     */
+    String getVariable();
 
     /***
      *Nombre de la unidad de medidad del parámetro

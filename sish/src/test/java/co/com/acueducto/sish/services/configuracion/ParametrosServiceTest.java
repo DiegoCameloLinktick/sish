@@ -51,7 +51,6 @@ public class ParametrosServiceTest {
         auditoriaService = new AuditoriaService();
 
         parametroModel = new ParametroModel();
-        parametroModel.setParametro("PRUEBAS");
         parametroModel.setIdParametro(1);
         parametroModel.setCodigo("Pruebas UNI 1");
         parametroModel.setDescripcion("pruebas unitarias");

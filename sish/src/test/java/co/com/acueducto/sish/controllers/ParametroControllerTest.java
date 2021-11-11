@@ -61,7 +61,6 @@ public class ParametroControllerTest {
         parametrosController = new ParametroController();
         parametroModel = new ParametroModel();
 
-        parametroModel.setParametro("Actuazacion prueba 1");
         parametroModel.setIdParametro(1);
         parametroModel.setCodigo("Parametro1");
         parametroModel.setDescripcion("Actualizacion 1");

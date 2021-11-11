@@ -23,13 +23,12 @@ public class ParametroModel extends Audit {
     private Integer idParametro;
 
     /***
-     * Nombre del parámetro
+     *id de variable del parámetro
      */
-    @NotNull(message = "El Parametro  no puede ser nulo")
-    @Size(min = 2, message = "El Nombre del Parametro del valor debe tener al menos dos caracteres")
-    @Column(name = "PARAMETRO", nullable = false)
+    @NotNull(message = "el id variable del parametro  no puede ser nulo")
+    @Column(name = "ID_VARIABLE", nullable = false)
     @Getter @Setter
-    private String parametro;
+    private Integer idVariable;
 
     /***
      *Codigo  del parámetro

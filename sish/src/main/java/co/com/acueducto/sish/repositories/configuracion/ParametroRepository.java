@@ -21,7 +21,6 @@ public interface ParametroRepository extends JpaRepository<ParametroModel, Integ
      * @return lista de ParametroDTO
      */
     @Query(value = "SELECT p.id_parametro as idParametro, " +
-            "p.parametro as parametro, " +
             "p.codigo as codigo, " +
             "p.descripcion as descripcion, " +
             "p.id_unidad_medida as idUnidadMedida, " +
@@ -36,14 +35,17 @@ public interface ParametroRepository extends JpaRepository<ParametroModel, Integ
             "p.USUARIO_ESTADO AS usuarioEstado, " +
             "d.DOMINIO_VALOR as nombreUnidadMedida, " +
             "d2.DOMINIO_VALOR as nombreTipoParametro, " +
-            "d3.DOMINIO_VALOR as nombreMetodo " +
+            "d3.DOMINIO_VALOR as nombreMetodo, " +
+            "d4.DOMINIO_VALOR AS variable " +
             "FROM PARAMETROS p " +
             "INNER JOIN DOMINIOS_VALORES d " +
             "ON d.ID_DOMINIO_VALOR  = p.ID_TIPO_PARAMETRO " +
             "INNER JOIN DOMINIOS_VALORES d2 " +
             "ON d2.ID_DOMINIO_VALOR  = p.ID_UNIDAD_MEDIDA " +
             "INNER JOIN DOMINIOS_VALORES d3 " +
-            "ON d3.ID_DOMINIO_VALOR  = p.ID_METODO ", nativeQuery = true)
+            "ON d3.ID_DOMINIO_VALOR  = p.ID_METODO " +
+            "INNER JOIN DOMINIOS_VALORES d4 " +
+            "ON d4.ID_DOMINIO_VALOR  = p.ID_VARIABLE ", nativeQuery = true)
     List<ParametroDTO> obtenerListaParametros();
 
 }
