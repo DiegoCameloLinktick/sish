@@ -18,7 +18,7 @@ import java.util.List;
  *  Clase de definición de la logica de negocio para los tipos de archivo configurado
  */
 @Service
-public class TipoArchivoConfiguradoService {
+public class TipoArchivoConfiguradoService implements ITipoArchivoConfiguradoService{
 
     @Autowired
     TipoArchivoConfiguradoRepository tipoArchivoConfiguradoRepository;

@@ -2,9 +2,7 @@ package co.com.acueducto.sish.services.configuracion;
 
 import co.com.acueducto.sish.dtos.OperacionAuditoriaEnum;
 import co.com.acueducto.sish.models.configuracion.TipoArchivoCampoModel;
-import co.com.acueducto.sish.models.configuracion.TipoArchivoConfiguradoModel;
 import co.com.acueducto.sish.repositories.configuracion.TipoArchivoCampoRepository;
-import co.com.acueducto.sish.repositories.configuracion.TipoArchivoConfiguradoRepository;
 import co.com.acueducto.sish.services.auditoria.AuditoriaService;
 import co.com.acueducto.sish.services.seguridad.RolService;
 import org.slf4j.Logger;
@@ -16,10 +14,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /***
- *  Clase de definición de la logica de negocio para los tipos de archivo configurado
+ *  Clase de definición de la logica de negocio para los tipos de archivo campo
  */
 @Service
-public class TipoArchivoCampoService {
+public class TipoArchivoCampoService implements ITipoArchivoCampoService{
 
     @Autowired
     TipoArchivoCampoRepository tipoArchivoCampoRepository;
