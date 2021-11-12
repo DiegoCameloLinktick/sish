@@ -51,7 +51,7 @@ public class ParametroXEstacionController {
 
     /***
      * Crea un parametroXEstacionModel
-     * @param parametroXEstacionModel Rol a crear
+     * @param parametroXEstacionModel objeto a crear
      * @return parametroXEstacionModel creado
      */
     @CrossOrigin(origins = "http://localhost:4200")
